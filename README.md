@@ -38,8 +38,11 @@ El procesamiento y análisis de los datos de RNA-seq se llevó a cabo mediante e
 
 ## Scripts
 
-- [Descarga de datos GEO](scripts/01_download_sra.slurm)
-- 
+- [Descarga de datos SRA](scripts/01_download_sra.slurm)
+- [FASTQC](scripts/02_fastqc_raw.slurm)
+- [Corrección de errores - Trimming - FASTQC](scripts/03_04_05.slurm)
+- [Alineamiento](scripts/06_aligment/)
+- [Análisis de expresión diferencial y de enriquecimiento](scripts/07_08_DEG_Enriquecimiento.R)
 
 
 
