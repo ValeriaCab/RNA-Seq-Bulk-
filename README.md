@@ -49,7 +49,7 @@ El procesamiento y análisis de los datos de RNA-seq se llevó a cabo mediante e
 
 ### 1. Descargar los datos crudos de RNA-seq desde la base de datos SRA
    
-> Datos tomados del paper: "Identificación y caracterización de células madre de la retina humana capaces de regeneración retiniana"
+> Datos tomados del paper: "Identificación y caracterización de células madre de la retina humana capaces de regeneración retiniana" [link](https://doi.org/10.1126/scitranslmed.adp6864)
 > 
 > **NCBI Link:** <https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE279113>
 >
