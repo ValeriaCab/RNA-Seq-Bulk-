@@ -27,3 +27,11 @@ En conjunto, los hallazgos obtenidos respaldan la hipótesis de que *MECOM* part
 
 ## Reporte renderizado
 -> https://valeriacab.github.io/RNA-Seq-Bulk-/
+
+
+## Pipeline
+
+El procesamiento y análisis de los datos de RNA-seq se llevó a cabo mediante el siguiente pipeline bioinformático:
+
+<img width="1387" height="813" alt="pipeline" src="https://github.com/user-attachments/assets/bb15b80c-6940-46fe-bc04-ec4d588f6c8b" />
+
