@@ -26,7 +26,9 @@ En conjunto, los hallazgos obtenidos respaldan la hipótesis de que *MECOM* part
 
 
 ## Reporte renderizado
--> https://valeriacab.github.io/RNA-Seq-Bulk-/
+En la siguiente página se presenta una descripción detallada de la motivación del proyecto, la obtención y procesamiento de los datos, la metodología empleada en el análisis, los resultados obtenidos, su comparación con los reportados en el estudio original y una discusión de las principales observaciones y hallazgos.
+
+-> [Reporte de análisis RNA-seq Bulk](https://valeriacab.github.io/RNA-Seq-Bulk-/)
 
 
 ## Pipeline
