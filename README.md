@@ -81,6 +81,26 @@ El estudio incluye un total de seis muestras biológicas, distribuidas en dos co
 
 Antes de alinear las lecturas, es importante que tengan uena calidad para no introducir ruido o sesgos a los siguientes análisis.
 
+### 3, 4, 5. Corrección de errores, Trimming, FASTQC
+
+**Objetivo:**: Corrección de errores en lecturas, fitrado de lecturas no corregibles, recorte y limpieza de lecturas y evaluación de calidad posterior al alineamiento.
+
+**Script:** [Paso 3,4 y 5](scripts/03_04_05.slurm)
+
+**Herramientas:** Rcorrector, FilterUncorrectabledPEfastq.py, TRimmomatic, FASTQC
+
+Se analizan las lecturas paired-end utilizando frecuencias de k-mers para identificar y corregir errores de secuenciación antes del alineamiento y genera archivos .cor.fq con las lecturas corregidas. Posteriormente, se identifican y eliminan lecturas marcadas como no corregibles por Rcorrector, se eliminarn secuencicias de adaptadores TruSeq, recortando bases de baha claidad, aplica una ventada desliante que controla la calidad promedio y descarta lecturas a 50pb, con los siguientes parámetros:
+
+| Parámetro | Valor | Función |
+|----------|:-------:|:-------:|
+| ILUMINACLIP| TruSeq3-PE.fa:2:30:10 | Elimina adaptadores de Illumina |
+|   LEADING  |    3    | Elimina bases al inicio de cada lectura con calidad menor a 3 |
+| TRAILING   |    3    | Elimina bases al final de cada lectura con calidad menor a 3 |
+| SLIDINGWINDOW |  4:25 | Evalúa ventanas de 4 bases y corta cuando la calidad promedio está por debajo de 25 |
+| MINLEN     |   50     |  Descarta lecturas con longitud final menor a 50 pb |
+| HEADCROP   |   10     |  Elimina las primeras 10 bases de cada lectura |
+
+
 ### 6. Alineamiento 
 
 **Objetivo:** Alinear las lecturas al genoma humano de referencia y cuantificar la expresión génica.
