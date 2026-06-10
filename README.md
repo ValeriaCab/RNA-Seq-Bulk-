@@ -1,18 +1,20 @@
 # "Evaluación del perfil de expresión génica diferencial por bulk RNA-seq para identificar el papel de *MECOM* en el potencial de regeneración en organoides de retina."
 
-**Proyecto final**
+>*10 Junio 2026*
+>
+> Proyecto Final
 
-**10 Junio 2026**
+---
 
-
+## Datos del equipo
 Licenciatura en Ciencias Genómicas
 * Martinez Cuevas Valeria - 8vo semestre
 * Cabrera Rojas Valeria - 6to semestre
 
-Clase: Bioinformática aplicada al análisis de transcriptómica diferencial
+**Clase:** Bioinformática aplicada al análisis de transcriptómica diferencial
 
 
-
+## Abstract
 MECOM ha sido propuesto como un factor de transcripción involucrado en la regulación del potencial regenerativo de células madre neurales retinianas humanas. Con el objetivo de evaluar su función y reproducir los hallazgos reportados previamente, se realizó un análisis de expresión génica diferencial mediante *bulk RNA-seq* en organoides retinianos humanos, comparando muestras control tipo salvaje (WT) con organoides portadores de un knockout de *MECOM*.
 
 El procesamiento de los datos incluyó la descarga de lecturas, evaluación de calidad mediante *FastQC* y *MultiQC*, corrección de errores con *Rcorrector*, filtrado y recorte de secuencias utilizando *Trimmomatic*, alineamiento al genoma de referencia con *STAR* y cuantificación de lecturas. El análisis de expresión diferencial se realizó con *DESeq2*, mientras que el enriquecimiento funcional se llevó a cabo mediante *clusterProfiler*.
