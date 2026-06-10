@@ -44,6 +44,26 @@ El procesamiento y análisis de los datos de RNA-seq se llevó a cabo mediante e
 - [Alineamiento](scripts/06_aligment/)
 - [Análisis de expresión diferencial y de enriquecimiento](scripts/07_08_DEG_Enriquecimiento.R)
 
+1. Descargar los datos crudos de RNA-seq desde la base de datos SRA [Paso 1](scripts/01_download_sra.slurm)
+   
+> Datos tomados del paper: "Identificación y caracterización de células madre de la retina humana capaces de regeneración retiniana"
+> 
+> **NCBI Link:** <https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE279113>
+>
+> **Bioproject:** PRJNA1170898
+
+Usando *WGET* se descargaron dos archivos FASTQ comprimidos (.gz) por cada muestra (TOTAL = 6 muestras), estos archivos contienen las lecturas *paired-end unstranded* obtenidas por secuenciación mediante la plataforma Illumina HiSeq 4000, con  una profundidad de secuenciación aproximada de entre 20 y 30 millones de lecturas por muestra.
+
+El estudio incluye un total de seis muestras biológicas, distribuidas en dos condiciones experimentales: 
+
+| Caso | control |
+|----------|:-------:|
+| Organoides con knockout de MECOM (KO) | Organoides de retina tipo wild type (WT) |
+|   3  |    3    |
+
+
+
+
 
 
 ## Infografia 
