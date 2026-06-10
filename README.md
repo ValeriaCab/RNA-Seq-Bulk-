@@ -23,3 +23,7 @@ Los resultados mostraron una clara separación entre las condiciones WT y *MECOM
 
 En conjunto, los hallazgos obtenidos respaldan la hipótesis de que *MECOM* participa en la regulación de programas transcripcionales asociados con el desarrollo y mantenimiento de la retina, además demuestran la reproducibilidad de los principales resultados biológicos reportados para este modelo experimental.
 
+
+
+## Reporte renderizado
+-> https://valeriacab.github.io/RNA-Seq-Bulk-/
