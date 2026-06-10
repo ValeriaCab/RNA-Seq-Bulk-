@@ -35,3 +35,15 @@ El procesamiento y análisis de los datos de RNA-seq se llevó a cabo mediante e
 
 <img width="1387" height="813" alt="pipeline" src="https://github.com/user-attachments/assets/bb15b80c-6940-46fe-bc04-ec4d588f6c8b" />
 
+
+## Referencias
+* Liu, H., Ma, Y., Gao, N., Zhou, Y., Li, G., Zhu, Q., Liu, X., Li, S., Deng, C., Chen, C., Yang, Y., Ren, Q., Hu, H., Cai, Y., Chen, M., Xue, Y., Zhang, K., Qu, J., & Su, J. (2025). Identification and characterization of human retinal stem cells capable of retinal regeneration. Science Translational Medicine, 17(791), eadp6864. https://doi.org/10.1126/scitranslmed.adp6864
+* Analysis workflow. (s. f.). https://biocorecrg.github.io/RNAseq_course_2019/workflow.html
+* Eldred, K. C., Edgerton, S. J., Ortuño-Lizarán, I., Wohlschlegel, J., Sherman, S. M., Petter, S., Wyatt-Draher, G., Hoffer, D., Glass, I., La Torre, A., & Reh, T. A. (2025). Ciliary marginal zone of the developing human retina maintains retinal progenitor cells until late gestational stages. Cell Reports, 44(4), 115460. https://doi.org/10.1016/j.celrep.2025.115460
+* Mao, X., An, Q., Xi, H., Yang, X., Zhang, X., Yuan, S., Wang, J., Hu, Y., Liu, Q., & Fan, G. (2019). Single-Cell RNA Sequencing of hESC-Derived 3D Retinal Organoids Reveals Novel Genes Regulating RPC Commitment in Early Human Retinogenesis. Stem Cell Reports, 13(4), 747-760. https://doi.org/10.1016/j.stemcr.2019.08.012
+* Zuo, Z., Cheng, X., Ferdous, S., Shao, J., Li, J., Bao, Y., Li, J., Lu, J., Lopez, A. J., Wohlschlegel, J., Prieve, A., Thomas, M. G., Reh, T. A., Li, Y., Moshiri, A., & Chen, R. (2024). Single cell dual-omic atlas of the human developing retina. Nature Communications, 15(1), 6792. https://doi.org/10.1038/s41467-024-50853-5
+
+
+
+
+
