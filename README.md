@@ -69,6 +69,28 @@ El estudio incluye un total de seis muestras biológicas, distribuidas en dos co
 |   3  |    3    |
 
 
+### 2. Control de calidad inicial (FASTQC)
+
+**Objetivo:** Evaluar el control de calidad incial de las lecturas crudas obtenidas de la secuenciación.
+
+**Script:** [Paso 2](scripts/02_fastqc_raw.slurm)
+
+**Herramienta:** FastQC
+
+**Descripción:** Posterior a la descarga de datos, se realia un control de calidad de las lecturas para detectar posibles problemas como adaptadores, baja calidad de la secuenciación, entre otros aspectos importantes. ESta herramienta, toma cada lectura (las 2 de cada muestra) y evalúa la calidad por posición de base, contenido de GC, secuencias duplicadas, adaptadores, longitu de lecturas y sobre-representación de secuencias.
+
+Antes de alinear las lecturas, es importante que tengan uena calidad para no introducir ruido o sesgos a los siguientes análisis.
+
+### 6. Alineamiento 
+
+**Objetivo:** Alinear las lecturas al genoma humano de referencia y cuantificar la expresión génica.
+
+**Script:** [Paso 6](scripts/06_aligment/)
+
+**Herramienta:** STAR
+
+Una vez que las lecturas ya pasaron por el control de calidad y correción, se tienen millones de ellas, por lo que es necesario identificar de que gen proviene cada una. Para ello, las lecturas fueron alineadas al genoma de referencia GRCh38. STAR determina la posición de esa lectura en el cromosoma en que se alineó 
+
 
 
 
