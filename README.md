@@ -130,6 +130,8 @@ En terminos generales, se siguió el presente pipeline y se utilizaron las herra
 
 
 ## Infografia 
+<img width="800" height="2000" alt="Infografía - RNA-seq Bulk Workflow(1)" src="https://github.com/user-attachments/assets/67c41a42-56af-44ea-bdce-6dce49687106" />
+
 
 
 
