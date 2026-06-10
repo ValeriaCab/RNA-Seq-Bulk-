@@ -89,7 +89,7 @@ Antes de alinear las lecturas, es importante que tengan uena calidad para no int
 
 **Herramientas:** Rcorrector, FilterUncorrectabledPEfastq.py, TRimmomatic, FASTQC
 
-Se analizan las lecturas paired-end utilizando frecuencias de k-mers para identificar y corregir errores de secuenciación antes del alineamiento y genera archivos .cor.fq con las lecturas corregidas. Posteriormente, se identifican y eliminan lecturas marcadas como no corregibles por Rcorrector, se eliminarn secuencicias de adaptadores TruSeq, recortando bases de baha claidad, aplica una ventada desliante que controla la calidad promedio y descarta lecturas a 50pb, con los siguientes parámetros:
+Se analizaron las lecturas utilizando Rcorrector, el cual trabaja con las frecuencias de k-mers para identificar y corregir errores de secuenciación antes del alineamiento, de esta forma genera archivos .cor.fq con las lecturas corregidas. Posteriormente, se identificaron y eliminaron las lecturas marcadas como no corregibles para despues ser filtradas y procesadas con Trimmomatic, eliminando secuencias adaptadoras TruSeq y recortando bases de baja calidad. Además, se aplicó una ventana deslizante para controlar la calidad promedio de las lecturas y se descartaron las que tenían una longitud final inferior a 50 pb. Los parámetros utilizados fueron:
 
 | Parámetro | Valor | Función |
 |----------|:-------:|:-------:|
@@ -107,11 +107,23 @@ Se analizan las lecturas paired-end utilizando frecuencias de k-mers para identi
 
 **Script:** [Paso 6](scripts/06_aligment/)
 
-**Herramienta:** STAR
+**Herramienta:** STAR v2.7.9a
 
-Una vez que las lecturas ya pasaron por el control de calidad y correción, se tienen millones de ellas, por lo que es necesario identificar de que gen proviene cada una. Para ello, las lecturas fueron alineadas al genoma de referencia GRCh38. STAR determina la posición de esa lectura en el cromosoma en que se alineó 
+Una vez que las lecturas ya pasaron por el control de calidad y correción, se tienen millones de ellas, por lo que es necesario identificar de que gen proviene cada una. Para ello, las lecturas en formato FASTQ fueron alineadas al genoma de referencia GRCh38, para determinar la posición de esa lectura en el cromosoma en que se alineó. De este prceso se generarn archivos BAM ordenados por coordenadas genómicas. Adicionalmente, se utilizó la opción --quantMode GeneCounts para obtener conteos de lecturas por gen, los cuales fueron empleados posteriormente en el análisis de expresión diferencial mediante DESeq2.
 
+### 7, 8. Análisis de expresión diferencial y análisis de enriquecimiento funcional 
 
+**Objetivo:** El análisis de expresión diferencial busca identificar genes donde la expresión cambia significativamente entre MECOM KO y control. Mientras que, el análisis de enriquecimiento funcional trata de identificar que procesos biológicos están sobrerrepresentados entre los genes diferencialmente expresados.
+
+**Script:** [Paso 7 y 8](scripts/07_08_DEG_Enriquecimiento.R)
+
+**Herramientas:** DESeq 2 y clusterProfiler (GO y GSEA)
+
+Los conteos obtenidos a partir de STAR fueron utilizados para construir una matriz de expresión, la cual fue analizada mediante el paquete DESeq2 en R. Primero, se eliminaron los genes con baja expresión, conservando únicamente aquellos que presentaban al menos 10 lecturas en un mínimo de tres muestras. Posteriormente, los conteos fueron normalizados y se ajustó para comparar las condiciones MECOM_KO y control. Los genes diferencialmente expresados se identificaron utilizando un valor de p ajustado (padj < 0.05) y un cambio de expresión absoluto mayor a dos veces (|log₂FoldChange| > 1). Finalmente, los identificadores de Ensembl fueron anotados con información funcional y simbología génica empleando la base de datos org.Hs.eg.db.
+
+A lo largo de este paso, creamos imagenes para visulizar estos análisis. 
+
+En terminos generales, se siguió el presente pipeline y se utilizaron las herramientas descritas para reproducir un análisis de RNA-seq bulk. Para obtener una descripción más detallada de los scripts, la visualización de los resultados y su discusión biológica, se recomienda consultar el reporte de análisis: [Reporte de análisis RNA-seq Bulk](https://valeriacab.github.io/RNA-Seq-Bulk-/)
 
 
 
