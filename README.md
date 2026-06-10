@@ -36,6 +36,17 @@ El procesamiento y análisis de los datos de RNA-seq se llevó a cabo mediante e
 <img width="1387" height="813" alt="pipeline" src="https://github.com/user-attachments/assets/bb15b80c-6940-46fe-bc04-ec4d588f6c8b" />
 
 
+## Scripts
+
+- [Descarga de datos GEO](scripts/01_download_sra.slurm)
+- 
+
+
+
+## Infografia 
+
+
+
 ## Referencias
 * Liu, H., Ma, Y., Gao, N., Zhou, Y., Li, G., Zhu, Q., Liu, X., Li, S., Deng, C., Chen, C., Yang, Y., Ren, Q., Hu, H., Cai, Y., Chen, M., Xue, Y., Zhang, K., Qu, J., & Su, J. (2025). Identification and characterization of human retinal stem cells capable of retinal regeneration. Science Translational Medicine, 17(791), eadp6864. https://doi.org/10.1126/scitranslmed.adp6864
 * Analysis workflow. (s. f.). https://biocorecrg.github.io/RNAseq_course_2019/workflow.html
