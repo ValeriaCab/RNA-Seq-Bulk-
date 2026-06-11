@@ -1,0 +1,8 @@
+	STAR --genomeDir /mnt/data/transcriptomica/vmartinez/proyecto_final/index_star --readFilesIn /mnt/data/transcriptomica/vmartinez/proyecto_final/04_trimmomatic/SRR30921771_1.paired.fastq.gz /mnt/data/transcriptomica/vmartinez/proyecto_final/04_trimmomatic/SRR30921771_2.paired.fastq.gz --outFileNamePrefix alignment_SRR30921771_ --outSAMtype BAM SortedByCoordinate --quantMode GeneCounts --readFilesCommand zcat
+	STAR version: 2.7.9a   compiled: 2021-05-04T09:43:56-0400 vega:/home/dobin/data/STAR/STARcode/STAR.master/source
+May 26 10:36:25 ..... started STAR run
+May 26 10:36:25 ..... loading genome
+May 26 10:38:42 ..... started mapping
+May 26 11:41:35 ..... finished mapping
+May 26 11:41:41 ..... started sorting BAM
+May 26 11:44:53 ..... finished successfully
