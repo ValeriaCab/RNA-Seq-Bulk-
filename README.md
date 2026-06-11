@@ -59,7 +59,7 @@ El procesamiento y análisis de los datos de RNA-seq se llevó a cabo mediante e
 
 **Script:** [Paso 1](scripts/01_download_sra.slurm)
 
-**Log:** [Paso 1](logs/Download_data.zip)
+**Log:** [Paso 1 - Log](logs/Download_data.zip)
 
 
 **Herramienta:** WGET
@@ -78,7 +78,9 @@ El estudio incluye un total de seis muestras biológicas, distribuidas en dos co
 
 **Objetivo:** Evaluar el control de calidad incial de las lecturas crudas obtenidas de la secuenciación.
 
-**Script:** [Paso 2](scripts/02_fastqc_raw.slurm)
+**Script:** [Paso 2](scripts/02_fastqc_raw.slurm) 
+
+**Log:** [Paso 2 - Log](logs/fastqc_raw.o1864)
 
 **Herramienta:** FastQC
 
@@ -90,7 +92,9 @@ Antes de alinear las lecturas, es importante que tengan uena calidad para no int
 
 **Objetivo:**: Corrección de errores en lecturas, fitrado de lecturas no corregibles, recorte y limpieza de lecturas y evaluación de calidad posterior al alineamiento.
 
-**Script:** [Paso 3,4 y 5](scripts/03_04_05.slurm)
+**Script:** [Paso 3,4 y 5](scripts/03_04_05.slurm) 
+
+**Log:** [Paso 3,4 y 5 - Log](logs/rna_full.o1873) 
 
 **Herramientas:** Rcorrector, FilterUncorrectabledPEfastq.py, TRimmomatic, FASTQC
 
@@ -111,6 +115,8 @@ Se analizaron las lecturas utilizando Rcorrector, el cual trabaja con las frecue
 **Objetivo:** Alinear las lecturas al genoma humano de referencia y cuantificar la expresión génica.
 
 **Script:** [Paso 6](scripts/06_aligment/)
+
+**Log:** [Paso 6 - Log ](logs/alignment)
 
 **Herramienta:** STAR v2.7.9a
 
