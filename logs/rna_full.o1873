@@ -1,0 +1,2290 @@
+===============================
+STEP 1 — RCORRECTOR
+===============================
+Using jellyfish:
+/home/wgutierrez/miniconda3/envs/rcorrector_env/bin/jellyfish
+Put the kmers into bloom filter
+/mnt/data/transcriptomica/database/Rcorrector-1.0.5/jellyfish/bin/jellyfish bc -m 23 -s 100000000 -C -t 16 -o tmp_da5dceda6ae9f799c53ed05f0f586d0d.bc /mnt/data/transcriptomica/vmartinez/proyecto_final/01_download_data/SRR30921769_1.fastq /mnt/data/transcriptomica/vmartinez/proyecto_final/01_download_data/SRR30921770_1.fastq /mnt/data/transcriptomica/vmartinez/proyecto_final/01_download_data/SRR30921771_1.fastq /mnt/data/transcriptomica/vmartinez/proyecto_final/01_download_data/SRR30921772_1.fastq /mnt/data/transcriptomica/vmartinez/proyecto_final/01_download_data/SRR30921773_1.fastq /mnt/data/transcriptomica/vmartinez/proyecto_final/01_download_data/SRR30921774_1.fastq /mnt/data/transcriptomica/vmartinez/proyecto_final/01_download_data/SRR30921769_2.fastq /mnt/data/transcriptomica/vmartinez/proyecto_final/01_download_data/SRR30921770_2.fastq /mnt/data/transcriptomica/vmartinez/proyecto_final/01_download_data/SRR30921771_2.fastq /mnt/data/transcriptomica/vmartinez/proyecto_final/01_download_data/SRR30921772_2.fastq /mnt/data/transcriptomica/vmartinez/proyecto_final/01_download_data/SRR30921773_2.fastq /mnt/data/transcriptomica/vmartinez/proyecto_final/01_download_data/SRR30921774_2.fastq 
+Count the kmers in the bloom filter
+/mnt/data/transcriptomica/database/Rcorrector-1.0.5/jellyfish/bin/jellyfish count -m 23 -s 100000 -C -t 16 --bc tmp_da5dceda6ae9f799c53ed05f0f586d0d.bc -o tmp_da5dceda6ae9f799c53ed05f0f586d0d.mer_counts /mnt/data/transcriptomica/vmartinez/proyecto_final/01_download_data/SRR30921769_1.fastq /mnt/data/transcriptomica/vmartinez/proyecto_final/01_download_data/SRR30921770_1.fastq /mnt/data/transcriptomica/vmartinez/proyecto_final/01_download_data/SRR30921771_1.fastq /mnt/data/transcriptomica/vmartinez/proyecto_final/01_download_data/SRR30921772_1.fastq /mnt/data/transcriptomica/vmartinez/proyecto_final/01_download_data/SRR30921773_1.fastq /mnt/data/transcriptomica/vmartinez/proyecto_final/01_download_data/SRR30921774_1.fastq /mnt/data/transcriptomica/vmartinez/proyecto_final/01_download_data/SRR30921769_2.fastq /mnt/data/transcriptomica/vmartinez/proyecto_final/01_download_data/SRR30921770_2.fastq /mnt/data/transcriptomica/vmartinez/proyecto_final/01_download_data/SRR30921771_2.fastq /mnt/data/transcriptomica/vmartinez/proyecto_final/01_download_data/SRR30921772_2.fastq /mnt/data/transcriptomica/vmartinez/proyecto_final/01_download_data/SRR30921773_2.fastq /mnt/data/transcriptomica/vmartinez/proyecto_final/01_download_data/SRR30921774_2.fastq 
+Dump the kmers
+/mnt/data/transcriptomica/database/Rcorrector-1.0.5/jellyfish/bin/jellyfish dump -L 2 tmp_da5dceda6ae9f799c53ed05f0f586d0d.mer_counts > tmp_da5dceda6ae9f799c53ed05f0f586d0d.jf_dump
+Error correction
+/mnt/data/transcriptomica/database/Rcorrector-1.0.5/rcorrector -t 16  -p /mnt/data/transcriptomica/vmartinez/proyecto_final/01_download_data/SRR30921769_1.fastq /mnt/data/transcriptomica/vmartinez/proyecto_final/01_download_data/SRR30921769_2.fastq -p /mnt/data/transcriptomica/vmartinez/proyecto_final/01_download_data/SRR30921770_1.fastq /mnt/data/transcriptomica/vmartinez/proyecto_final/01_download_data/SRR30921770_2.fastq -p /mnt/data/transcriptomica/vmartinez/proyecto_final/01_download_data/SRR30921771_1.fastq /mnt/data/transcriptomica/vmartinez/proyecto_final/01_download_data/SRR30921771_2.fastq -p /mnt/data/transcriptomica/vmartinez/proyecto_final/01_download_data/SRR30921772_1.fastq /mnt/data/transcriptomica/vmartinez/proyecto_final/01_download_data/SRR30921772_2.fastq -p /mnt/data/transcriptomica/vmartinez/proyecto_final/01_download_data/SRR30921773_1.fastq /mnt/data/transcriptomica/vmartinez/proyecto_final/01_download_data/SRR30921773_2.fastq -p /mnt/data/transcriptomica/vmartinez/proyecto_final/01_download_data/SRR30921774_1.fastq /mnt/data/transcriptomica/vmartinez/proyecto_final/01_download_data/SRR30921774_2.fastq -c tmp_da5dceda6ae9f799c53ed05f0f586d0d.jf_dump
+Stored 670529570 kmers
+Weak kmer threshold rate: 0.011388 (estimated from 0.950/1 of the chosen kmers)
+Bad quality threshold is '8'
+Processed 293808218 reads
+	Corrected 128049319 bases.
+===============================
+FILTERING UNCORRECTABLE READS
+===============================
+Filtering SRR30921769
+100000 reads processed
+200000 reads processed
+300000 reads processed
+400000 reads processed
+500000 reads processed
+600000 reads processed
+700000 reads processed
+800000 reads processed
+900000 reads processed
+1000000 reads processed
+1100000 reads processed
+1200000 reads processed
+1300000 reads processed
+1400000 reads processed
+1500000 reads processed
+1600000 reads processed
+1700000 reads processed
+1800000 reads processed
+1900000 reads processed
+2000000 reads processed
+2100000 reads processed
+2200000 reads processed
+2300000 reads processed
+2400000 reads processed
+2500000 reads processed
+2600000 reads processed
+2700000 reads processed
+2800000 reads processed
+2900000 reads processed
+3000000 reads processed
+3100000 reads processed
+3200000 reads processed
+3300000 reads processed
+3400000 reads processed
+3500000 reads processed
+3600000 reads processed
+3700000 reads processed
+3800000 reads processed
+3900000 reads processed
+4000000 reads processed
+4100000 reads processed
+4200000 reads processed
+4300000 reads processed
+4400000 reads processed
+4500000 reads processed
+4600000 reads processed
+4700000 reads processed
+4800000 reads processed
+4900000 reads processed
+5000000 reads processed
+5100000 reads processed
+5200000 reads processed
+5300000 reads processed
+5400000 reads processed
+5500000 reads processed
+5600000 reads processed
+5700000 reads processed
+5800000 reads processed
+5900000 reads processed
+6000000 reads processed
+6100000 reads processed
+6200000 reads processed
+6300000 reads processed
+6400000 reads processed
+6500000 reads processed
+6600000 reads processed
+6700000 reads processed
+6800000 reads processed
+6900000 reads processed
+7000000 reads processed
+7100000 reads processed
+7200000 reads processed
+7300000 reads processed
+7400000 reads processed
+7500000 reads processed
+7600000 reads processed
+7700000 reads processed
+7800000 reads processed
+7900000 reads processed
+8000000 reads processed
+8100000 reads processed
+8200000 reads processed
+8300000 reads processed
+8400000 reads processed
+8500000 reads processed
+8600000 reads processed
+8700000 reads processed
+8800000 reads processed
+8900000 reads processed
+9000000 reads processed
+9100000 reads processed
+9200000 reads processed
+9300000 reads processed
+9400000 reads processed
+9500000 reads processed
+9600000 reads processed
+9700000 reads processed
+9800000 reads processed
+9900000 reads processed
+10000000 reads processed
+10100000 reads processed
+10200000 reads processed
+10300000 reads processed
+10400000 reads processed
+10500000 reads processed
+10600000 reads processed
+10700000 reads processed
+10800000 reads processed
+10900000 reads processed
+11000000 reads processed
+11100000 reads processed
+11200000 reads processed
+11300000 reads processed
+11400000 reads processed
+11500000 reads processed
+11600000 reads processed
+11700000 reads processed
+11800000 reads processed
+11900000 reads processed
+12000000 reads processed
+12100000 reads processed
+12200000 reads processed
+12300000 reads processed
+12400000 reads processed
+12500000 reads processed
+12600000 reads processed
+12700000 reads processed
+12800000 reads processed
+12900000 reads processed
+13000000 reads processed
+13100000 reads processed
+13200000 reads processed
+13300000 reads processed
+13400000 reads processed
+13500000 reads processed
+13600000 reads processed
+13700000 reads processed
+13800000 reads processed
+13900000 reads processed
+14000000 reads processed
+14100000 reads processed
+14200000 reads processed
+14300000 reads processed
+14400000 reads processed
+14500000 reads processed
+14600000 reads processed
+14700000 reads processed
+14800000 reads processed
+14900000 reads processed
+15000000 reads processed
+15100000 reads processed
+15200000 reads processed
+15300000 reads processed
+15400000 reads processed
+15500000 reads processed
+15600000 reads processed
+15700000 reads processed
+15800000 reads processed
+15900000 reads processed
+16000000 reads processed
+16100000 reads processed
+16200000 reads processed
+16300000 reads processed
+16400000 reads processed
+16500000 reads processed
+16600000 reads processed
+16700000 reads processed
+16800000 reads processed
+16900000 reads processed
+17000000 reads processed
+17100000 reads processed
+17200000 reads processed
+17300000 reads processed
+17400000 reads processed
+17500000 reads processed
+17600000 reads processed
+17700000 reads processed
+17800000 reads processed
+17900000 reads processed
+18000000 reads processed
+18100000 reads processed
+18200000 reads processed
+18300000 reads processed
+18400000 reads processed
+18500000 reads processed
+18600000 reads processed
+18700000 reads processed
+18800000 reads processed
+18900000 reads processed
+19000000 reads processed
+19100000 reads processed
+19200000 reads processed
+19300000 reads processed
+19400000 reads processed
+19500000 reads processed
+19600000 reads processed
+19700000 reads processed
+19800000 reads processed
+19900000 reads processed
+20000000 reads processed
+20100000 reads processed
+20200000 reads processed
+20300000 reads processed
+20400000 reads processed
+20500000 reads processed
+20600000 reads processed
+20700000 reads processed
+20800000 reads processed
+20900000 reads processed
+21000000 reads processed
+21100000 reads processed
+21200000 reads processed
+21300000 reads processed
+21400000 reads processed
+21500000 reads processed
+21600000 reads processed
+21700000 reads processed
+21800000 reads processed
+21900000 reads processed
+22000000 reads processed
+22100000 reads processed
+22200000 reads processed
+Traceback (most recent call last):
+  File "/mnt/data/transcriptomica/database/TranscriptomeAssemblyTools/FilterUncorrectabledPEfastq.py", line 107, in <module>
+    unfix_log = open(os.path.join(
+                ^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/mnt/data/transcriptomica/vmartinez/proyecto_final/02_rcorrector/rmunfixable_/mnt/data/transcriptomica/vmartinez/proyecto_final/02_rcorrector.log'
+Filtering SRR30921770
+100000 reads processed
+200000 reads processed
+300000 reads processed
+400000 reads processed
+500000 reads processed
+600000 reads processed
+700000 reads processed
+800000 reads processed
+900000 reads processed
+1000000 reads processed
+1100000 reads processed
+1200000 reads processed
+1300000 reads processed
+1400000 reads processed
+1500000 reads processed
+1600000 reads processed
+1700000 reads processed
+1800000 reads processed
+1900000 reads processed
+2000000 reads processed
+2100000 reads processed
+2200000 reads processed
+2300000 reads processed
+2400000 reads processed
+2500000 reads processed
+2600000 reads processed
+2700000 reads processed
+2800000 reads processed
+2900000 reads processed
+3000000 reads processed
+3100000 reads processed
+3200000 reads processed
+3300000 reads processed
+3400000 reads processed
+3500000 reads processed
+3600000 reads processed
+3700000 reads processed
+3800000 reads processed
+3900000 reads processed
+4000000 reads processed
+4100000 reads processed
+4200000 reads processed
+4300000 reads processed
+4400000 reads processed
+4500000 reads processed
+4600000 reads processed
+4700000 reads processed
+4800000 reads processed
+4900000 reads processed
+5000000 reads processed
+5100000 reads processed
+5200000 reads processed
+5300000 reads processed
+5400000 reads processed
+5500000 reads processed
+5600000 reads processed
+5700000 reads processed
+5800000 reads processed
+5900000 reads processed
+6000000 reads processed
+6100000 reads processed
+6200000 reads processed
+6300000 reads processed
+6400000 reads processed
+6500000 reads processed
+6600000 reads processed
+6700000 reads processed
+6800000 reads processed
+6900000 reads processed
+7000000 reads processed
+7100000 reads processed
+7200000 reads processed
+7300000 reads processed
+7400000 reads processed
+7500000 reads processed
+7600000 reads processed
+7700000 reads processed
+7800000 reads processed
+7900000 reads processed
+8000000 reads processed
+8100000 reads processed
+8200000 reads processed
+8300000 reads processed
+8400000 reads processed
+8500000 reads processed
+8600000 reads processed
+8700000 reads processed
+8800000 reads processed
+8900000 reads processed
+9000000 reads processed
+9100000 reads processed
+9200000 reads processed
+9300000 reads processed
+9400000 reads processed
+9500000 reads processed
+9600000 reads processed
+9700000 reads processed
+9800000 reads processed
+9900000 reads processed
+10000000 reads processed
+10100000 reads processed
+10200000 reads processed
+10300000 reads processed
+10400000 reads processed
+10500000 reads processed
+10600000 reads processed
+10700000 reads processed
+10800000 reads processed
+10900000 reads processed
+11000000 reads processed
+11100000 reads processed
+11200000 reads processed
+11300000 reads processed
+11400000 reads processed
+11500000 reads processed
+11600000 reads processed
+11700000 reads processed
+11800000 reads processed
+11900000 reads processed
+12000000 reads processed
+12100000 reads processed
+12200000 reads processed
+12300000 reads processed
+12400000 reads processed
+12500000 reads processed
+12600000 reads processed
+12700000 reads processed
+12800000 reads processed
+12900000 reads processed
+13000000 reads processed
+13100000 reads processed
+13200000 reads processed
+13300000 reads processed
+13400000 reads processed
+13500000 reads processed
+13600000 reads processed
+13700000 reads processed
+13800000 reads processed
+13900000 reads processed
+14000000 reads processed
+14100000 reads processed
+14200000 reads processed
+14300000 reads processed
+14400000 reads processed
+14500000 reads processed
+14600000 reads processed
+14700000 reads processed
+14800000 reads processed
+14900000 reads processed
+15000000 reads processed
+15100000 reads processed
+15200000 reads processed
+15300000 reads processed
+15400000 reads processed
+15500000 reads processed
+15600000 reads processed
+15700000 reads processed
+15800000 reads processed
+15900000 reads processed
+16000000 reads processed
+16100000 reads processed
+16200000 reads processed
+16300000 reads processed
+16400000 reads processed
+16500000 reads processed
+16600000 reads processed
+16700000 reads processed
+16800000 reads processed
+16900000 reads processed
+17000000 reads processed
+17100000 reads processed
+17200000 reads processed
+17300000 reads processed
+17400000 reads processed
+17500000 reads processed
+17600000 reads processed
+17700000 reads processed
+17800000 reads processed
+17900000 reads processed
+18000000 reads processed
+18100000 reads processed
+18200000 reads processed
+18300000 reads processed
+18400000 reads processed
+18500000 reads processed
+18600000 reads processed
+18700000 reads processed
+18800000 reads processed
+18900000 reads processed
+19000000 reads processed
+19100000 reads processed
+19200000 reads processed
+19300000 reads processed
+19400000 reads processed
+19500000 reads processed
+19600000 reads processed
+19700000 reads processed
+19800000 reads processed
+19900000 reads processed
+20000000 reads processed
+20100000 reads processed
+20200000 reads processed
+20300000 reads processed
+20400000 reads processed
+20500000 reads processed
+Traceback (most recent call last):
+  File "/mnt/data/transcriptomica/database/TranscriptomeAssemblyTools/FilterUncorrectabledPEfastq.py", line 107, in <module>
+    unfix_log = open(os.path.join(
+                ^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/mnt/data/transcriptomica/vmartinez/proyecto_final/02_rcorrector/rmunfixable_/mnt/data/transcriptomica/vmartinez/proyecto_final/02_rcorrector.log'
+Filtering SRR30921771
+100000 reads processed
+200000 reads processed
+300000 reads processed
+400000 reads processed
+500000 reads processed
+600000 reads processed
+700000 reads processed
+800000 reads processed
+900000 reads processed
+1000000 reads processed
+1100000 reads processed
+1200000 reads processed
+1300000 reads processed
+1400000 reads processed
+1500000 reads processed
+1600000 reads processed
+1700000 reads processed
+1800000 reads processed
+1900000 reads processed
+2000000 reads processed
+2100000 reads processed
+2200000 reads processed
+2300000 reads processed
+2400000 reads processed
+2500000 reads processed
+2600000 reads processed
+2700000 reads processed
+2800000 reads processed
+2900000 reads processed
+3000000 reads processed
+3100000 reads processed
+3200000 reads processed
+3300000 reads processed
+3400000 reads processed
+3500000 reads processed
+3600000 reads processed
+3700000 reads processed
+3800000 reads processed
+3900000 reads processed
+4000000 reads processed
+4100000 reads processed
+4200000 reads processed
+4300000 reads processed
+4400000 reads processed
+4500000 reads processed
+4600000 reads processed
+4700000 reads processed
+4800000 reads processed
+4900000 reads processed
+5000000 reads processed
+5100000 reads processed
+5200000 reads processed
+5300000 reads processed
+5400000 reads processed
+5500000 reads processed
+5600000 reads processed
+5700000 reads processed
+5800000 reads processed
+5900000 reads processed
+6000000 reads processed
+6100000 reads processed
+6200000 reads processed
+6300000 reads processed
+6400000 reads processed
+6500000 reads processed
+6600000 reads processed
+6700000 reads processed
+6800000 reads processed
+6900000 reads processed
+7000000 reads processed
+7100000 reads processed
+7200000 reads processed
+7300000 reads processed
+7400000 reads processed
+7500000 reads processed
+7600000 reads processed
+7700000 reads processed
+7800000 reads processed
+7900000 reads processed
+8000000 reads processed
+8100000 reads processed
+8200000 reads processed
+8300000 reads processed
+8400000 reads processed
+8500000 reads processed
+8600000 reads processed
+8700000 reads processed
+8800000 reads processed
+8900000 reads processed
+9000000 reads processed
+9100000 reads processed
+9200000 reads processed
+9300000 reads processed
+9400000 reads processed
+9500000 reads processed
+9600000 reads processed
+9700000 reads processed
+9800000 reads processed
+9900000 reads processed
+10000000 reads processed
+10100000 reads processed
+10200000 reads processed
+10300000 reads processed
+10400000 reads processed
+10500000 reads processed
+10600000 reads processed
+10700000 reads processed
+10800000 reads processed
+10900000 reads processed
+11000000 reads processed
+11100000 reads processed
+11200000 reads processed
+11300000 reads processed
+11400000 reads processed
+11500000 reads processed
+11600000 reads processed
+11700000 reads processed
+11800000 reads processed
+11900000 reads processed
+12000000 reads processed
+12100000 reads processed
+12200000 reads processed
+12300000 reads processed
+12400000 reads processed
+12500000 reads processed
+12600000 reads processed
+12700000 reads processed
+12800000 reads processed
+12900000 reads processed
+13000000 reads processed
+13100000 reads processed
+13200000 reads processed
+13300000 reads processed
+13400000 reads processed
+13500000 reads processed
+13600000 reads processed
+13700000 reads processed
+13800000 reads processed
+13900000 reads processed
+14000000 reads processed
+14100000 reads processed
+14200000 reads processed
+14300000 reads processed
+14400000 reads processed
+14500000 reads processed
+14600000 reads processed
+14700000 reads processed
+14800000 reads processed
+14900000 reads processed
+15000000 reads processed
+15100000 reads processed
+15200000 reads processed
+15300000 reads processed
+15400000 reads processed
+15500000 reads processed
+15600000 reads processed
+15700000 reads processed
+15800000 reads processed
+15900000 reads processed
+16000000 reads processed
+16100000 reads processed
+16200000 reads processed
+16300000 reads processed
+16400000 reads processed
+16500000 reads processed
+16600000 reads processed
+16700000 reads processed
+16800000 reads processed
+16900000 reads processed
+17000000 reads processed
+17100000 reads processed
+17200000 reads processed
+17300000 reads processed
+17400000 reads processed
+17500000 reads processed
+17600000 reads processed
+17700000 reads processed
+17800000 reads processed
+17900000 reads processed
+18000000 reads processed
+18100000 reads processed
+18200000 reads processed
+18300000 reads processed
+18400000 reads processed
+18500000 reads processed
+18600000 reads processed
+18700000 reads processed
+18800000 reads processed
+18900000 reads processed
+19000000 reads processed
+19100000 reads processed
+19200000 reads processed
+19300000 reads processed
+19400000 reads processed
+19500000 reads processed
+19600000 reads processed
+19700000 reads processed
+19800000 reads processed
+19900000 reads processed
+20000000 reads processed
+20100000 reads processed
+20200000 reads processed
+20300000 reads processed
+20400000 reads processed
+20500000 reads processed
+20600000 reads processed
+20700000 reads processed
+20800000 reads processed
+Traceback (most recent call last):
+  File "/mnt/data/transcriptomica/database/TranscriptomeAssemblyTools/FilterUncorrectabledPEfastq.py", line 107, in <module>
+    unfix_log = open(os.path.join(
+                ^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/mnt/data/transcriptomica/vmartinez/proyecto_final/02_rcorrector/rmunfixable_/mnt/data/transcriptomica/vmartinez/proyecto_final/02_rcorrector.log'
+Filtering SRR30921772
+100000 reads processed
+200000 reads processed
+300000 reads processed
+400000 reads processed
+500000 reads processed
+600000 reads processed
+700000 reads processed
+800000 reads processed
+900000 reads processed
+1000000 reads processed
+1100000 reads processed
+1200000 reads processed
+1300000 reads processed
+1400000 reads processed
+1500000 reads processed
+1600000 reads processed
+1700000 reads processed
+1800000 reads processed
+1900000 reads processed
+2000000 reads processed
+2100000 reads processed
+2200000 reads processed
+2300000 reads processed
+2400000 reads processed
+2500000 reads processed
+2600000 reads processed
+2700000 reads processed
+2800000 reads processed
+2900000 reads processed
+3000000 reads processed
+3100000 reads processed
+3200000 reads processed
+3300000 reads processed
+3400000 reads processed
+3500000 reads processed
+3600000 reads processed
+3700000 reads processed
+3800000 reads processed
+3900000 reads processed
+4000000 reads processed
+4100000 reads processed
+4200000 reads processed
+4300000 reads processed
+4400000 reads processed
+4500000 reads processed
+4600000 reads processed
+4700000 reads processed
+4800000 reads processed
+4900000 reads processed
+5000000 reads processed
+5100000 reads processed
+5200000 reads processed
+5300000 reads processed
+5400000 reads processed
+5500000 reads processed
+5600000 reads processed
+5700000 reads processed
+5800000 reads processed
+5900000 reads processed
+6000000 reads processed
+6100000 reads processed
+6200000 reads processed
+6300000 reads processed
+6400000 reads processed
+6500000 reads processed
+6600000 reads processed
+6700000 reads processed
+6800000 reads processed
+6900000 reads processed
+7000000 reads processed
+7100000 reads processed
+7200000 reads processed
+7300000 reads processed
+7400000 reads processed
+7500000 reads processed
+7600000 reads processed
+7700000 reads processed
+7800000 reads processed
+7900000 reads processed
+8000000 reads processed
+8100000 reads processed
+8200000 reads processed
+8300000 reads processed
+8400000 reads processed
+8500000 reads processed
+8600000 reads processed
+8700000 reads processed
+8800000 reads processed
+8900000 reads processed
+9000000 reads processed
+9100000 reads processed
+9200000 reads processed
+9300000 reads processed
+9400000 reads processed
+9500000 reads processed
+9600000 reads processed
+9700000 reads processed
+9800000 reads processed
+9900000 reads processed
+10000000 reads processed
+10100000 reads processed
+10200000 reads processed
+10300000 reads processed
+10400000 reads processed
+10500000 reads processed
+10600000 reads processed
+10700000 reads processed
+10800000 reads processed
+10900000 reads processed
+11000000 reads processed
+11100000 reads processed
+11200000 reads processed
+11300000 reads processed
+11400000 reads processed
+11500000 reads processed
+11600000 reads processed
+11700000 reads processed
+11800000 reads processed
+11900000 reads processed
+12000000 reads processed
+12100000 reads processed
+12200000 reads processed
+12300000 reads processed
+12400000 reads processed
+12500000 reads processed
+12600000 reads processed
+12700000 reads processed
+12800000 reads processed
+12900000 reads processed
+13000000 reads processed
+13100000 reads processed
+13200000 reads processed
+13300000 reads processed
+13400000 reads processed
+13500000 reads processed
+13600000 reads processed
+13700000 reads processed
+13800000 reads processed
+13900000 reads processed
+14000000 reads processed
+14100000 reads processed
+14200000 reads processed
+14300000 reads processed
+14400000 reads processed
+14500000 reads processed
+14600000 reads processed
+14700000 reads processed
+14800000 reads processed
+14900000 reads processed
+15000000 reads processed
+15100000 reads processed
+15200000 reads processed
+15300000 reads processed
+15400000 reads processed
+15500000 reads processed
+15600000 reads processed
+15700000 reads processed
+15800000 reads processed
+15900000 reads processed
+16000000 reads processed
+16100000 reads processed
+16200000 reads processed
+16300000 reads processed
+16400000 reads processed
+16500000 reads processed
+16600000 reads processed
+16700000 reads processed
+16800000 reads processed
+16900000 reads processed
+17000000 reads processed
+17100000 reads processed
+17200000 reads processed
+17300000 reads processed
+17400000 reads processed
+17500000 reads processed
+17600000 reads processed
+17700000 reads processed
+17800000 reads processed
+17900000 reads processed
+18000000 reads processed
+18100000 reads processed
+18200000 reads processed
+18300000 reads processed
+18400000 reads processed
+18500000 reads processed
+18600000 reads processed
+18700000 reads processed
+18800000 reads processed
+18900000 reads processed
+19000000 reads processed
+19100000 reads processed
+19200000 reads processed
+19300000 reads processed
+19400000 reads processed
+19500000 reads processed
+19600000 reads processed
+19700000 reads processed
+19800000 reads processed
+19900000 reads processed
+20000000 reads processed
+20100000 reads processed
+20200000 reads processed
+20300000 reads processed
+20400000 reads processed
+20500000 reads processed
+20600000 reads processed
+20700000 reads processed
+20800000 reads processed
+20900000 reads processed
+21000000 reads processed
+21100000 reads processed
+21200000 reads processed
+21300000 reads processed
+21400000 reads processed
+21500000 reads processed
+21600000 reads processed
+21700000 reads processed
+21800000 reads processed
+21900000 reads processed
+22000000 reads processed
+22100000 reads processed
+22200000 reads processed
+22300000 reads processed
+22400000 reads processed
+22500000 reads processed
+22600000 reads processed
+22700000 reads processed
+22800000 reads processed
+22900000 reads processed
+23000000 reads processed
+23100000 reads processed
+23200000 reads processed
+23300000 reads processed
+23400000 reads processed
+23500000 reads processed
+23600000 reads processed
+23700000 reads processed
+23800000 reads processed
+23900000 reads processed
+24000000 reads processed
+24100000 reads processed
+24200000 reads processed
+24300000 reads processed
+24400000 reads processed
+24500000 reads processed
+24600000 reads processed
+24700000 reads processed
+24800000 reads processed
+24900000 reads processed
+25000000 reads processed
+25100000 reads processed
+25200000 reads processed
+25300000 reads processed
+25400000 reads processed
+25500000 reads processed
+25600000 reads processed
+25700000 reads processed
+25800000 reads processed
+25900000 reads processed
+26000000 reads processed
+26100000 reads processed
+26200000 reads processed
+26300000 reads processed
+26400000 reads processed
+26500000 reads processed
+26600000 reads processed
+26700000 reads processed
+26800000 reads processed
+26900000 reads processed
+27000000 reads processed
+27100000 reads processed
+27200000 reads processed
+27300000 reads processed
+27400000 reads processed
+27500000 reads processed
+27600000 reads processed
+27700000 reads processed
+27800000 reads processed
+27900000 reads processed
+28000000 reads processed
+28100000 reads processed
+28200000 reads processed
+28300000 reads processed
+28400000 reads processed
+28500000 reads processed
+28600000 reads processed
+28700000 reads processed
+28800000 reads processed
+28900000 reads processed
+29000000 reads processed
+29100000 reads processed
+29200000 reads processed
+29300000 reads processed
+29400000 reads processed
+29500000 reads processed
+29600000 reads processed
+29700000 reads processed
+29800000 reads processed
+29900000 reads processed
+30000000 reads processed
+30100000 reads processed
+30200000 reads processed
+30300000 reads processed
+30400000 reads processed
+30500000 reads processed
+30600000 reads processed
+30700000 reads processed
+30800000 reads processed
+30900000 reads processed
+31000000 reads processed
+31100000 reads processed
+31200000 reads processed
+31300000 reads processed
+31400000 reads processed
+31500000 reads processed
+31600000 reads processed
+31700000 reads processed
+31800000 reads processed
+Traceback (most recent call last):
+  File "/mnt/data/transcriptomica/database/TranscriptomeAssemblyTools/FilterUncorrectabledPEfastq.py", line 107, in <module>
+    unfix_log = open(os.path.join(
+                ^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/mnt/data/transcriptomica/vmartinez/proyecto_final/02_rcorrector/rmunfixable_/mnt/data/transcriptomica/vmartinez/proyecto_final/02_rcorrector.log'
+Filtering SRR30921773
+100000 reads processed
+200000 reads processed
+300000 reads processed
+400000 reads processed
+500000 reads processed
+600000 reads processed
+700000 reads processed
+800000 reads processed
+900000 reads processed
+1000000 reads processed
+1100000 reads processed
+1200000 reads processed
+1300000 reads processed
+1400000 reads processed
+1500000 reads processed
+1600000 reads processed
+1700000 reads processed
+1800000 reads processed
+1900000 reads processed
+2000000 reads processed
+2100000 reads processed
+2200000 reads processed
+2300000 reads processed
+2400000 reads processed
+2500000 reads processed
+2600000 reads processed
+2700000 reads processed
+2800000 reads processed
+2900000 reads processed
+3000000 reads processed
+3100000 reads processed
+3200000 reads processed
+3300000 reads processed
+3400000 reads processed
+3500000 reads processed
+3600000 reads processed
+3700000 reads processed
+3800000 reads processed
+3900000 reads processed
+4000000 reads processed
+4100000 reads processed
+4200000 reads processed
+4300000 reads processed
+4400000 reads processed
+4500000 reads processed
+4600000 reads processed
+4700000 reads processed
+4800000 reads processed
+4900000 reads processed
+5000000 reads processed
+5100000 reads processed
+5200000 reads processed
+5300000 reads processed
+5400000 reads processed
+5500000 reads processed
+5600000 reads processed
+5700000 reads processed
+5800000 reads processed
+5900000 reads processed
+6000000 reads processed
+6100000 reads processed
+6200000 reads processed
+6300000 reads processed
+6400000 reads processed
+6500000 reads processed
+6600000 reads processed
+6700000 reads processed
+6800000 reads processed
+6900000 reads processed
+7000000 reads processed
+7100000 reads processed
+7200000 reads processed
+7300000 reads processed
+7400000 reads processed
+7500000 reads processed
+7600000 reads processed
+7700000 reads processed
+7800000 reads processed
+7900000 reads processed
+8000000 reads processed
+8100000 reads processed
+8200000 reads processed
+8300000 reads processed
+8400000 reads processed
+8500000 reads processed
+8600000 reads processed
+8700000 reads processed
+8800000 reads processed
+8900000 reads processed
+9000000 reads processed
+9100000 reads processed
+9200000 reads processed
+9300000 reads processed
+9400000 reads processed
+9500000 reads processed
+9600000 reads processed
+9700000 reads processed
+9800000 reads processed
+9900000 reads processed
+10000000 reads processed
+10100000 reads processed
+10200000 reads processed
+10300000 reads processed
+10400000 reads processed
+10500000 reads processed
+10600000 reads processed
+10700000 reads processed
+10800000 reads processed
+10900000 reads processed
+11000000 reads processed
+11100000 reads processed
+11200000 reads processed
+11300000 reads processed
+11400000 reads processed
+11500000 reads processed
+11600000 reads processed
+11700000 reads processed
+11800000 reads processed
+11900000 reads processed
+12000000 reads processed
+12100000 reads processed
+12200000 reads processed
+12300000 reads processed
+12400000 reads processed
+12500000 reads processed
+12600000 reads processed
+12700000 reads processed
+12800000 reads processed
+12900000 reads processed
+13000000 reads processed
+13100000 reads processed
+13200000 reads processed
+13300000 reads processed
+13400000 reads processed
+13500000 reads processed
+13600000 reads processed
+13700000 reads processed
+13800000 reads processed
+13900000 reads processed
+14000000 reads processed
+14100000 reads processed
+14200000 reads processed
+14300000 reads processed
+14400000 reads processed
+14500000 reads processed
+14600000 reads processed
+14700000 reads processed
+14800000 reads processed
+14900000 reads processed
+15000000 reads processed
+15100000 reads processed
+15200000 reads processed
+15300000 reads processed
+15400000 reads processed
+15500000 reads processed
+15600000 reads processed
+15700000 reads processed
+15800000 reads processed
+15900000 reads processed
+16000000 reads processed
+16100000 reads processed
+16200000 reads processed
+16300000 reads processed
+16400000 reads processed
+16500000 reads processed
+16600000 reads processed
+16700000 reads processed
+16800000 reads processed
+16900000 reads processed
+17000000 reads processed
+17100000 reads processed
+17200000 reads processed
+17300000 reads processed
+17400000 reads processed
+17500000 reads processed
+17600000 reads processed
+17700000 reads processed
+17800000 reads processed
+17900000 reads processed
+18000000 reads processed
+18100000 reads processed
+18200000 reads processed
+18300000 reads processed
+18400000 reads processed
+18500000 reads processed
+18600000 reads processed
+18700000 reads processed
+18800000 reads processed
+18900000 reads processed
+19000000 reads processed
+19100000 reads processed
+19200000 reads processed
+19300000 reads processed
+19400000 reads processed
+19500000 reads processed
+19600000 reads processed
+19700000 reads processed
+19800000 reads processed
+19900000 reads processed
+20000000 reads processed
+20100000 reads processed
+20200000 reads processed
+20300000 reads processed
+20400000 reads processed
+20500000 reads processed
+20600000 reads processed
+20700000 reads processed
+20800000 reads processed
+20900000 reads processed
+21000000 reads processed
+21100000 reads processed
+21200000 reads processed
+21300000 reads processed
+21400000 reads processed
+21500000 reads processed
+21600000 reads processed
+21700000 reads processed
+21800000 reads processed
+21900000 reads processed
+22000000 reads processed
+22100000 reads processed
+22200000 reads processed
+22300000 reads processed
+22400000 reads processed
+22500000 reads processed
+Traceback (most recent call last):
+  File "/mnt/data/transcriptomica/database/TranscriptomeAssemblyTools/FilterUncorrectabledPEfastq.py", line 107, in <module>
+    unfix_log = open(os.path.join(
+                ^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/mnt/data/transcriptomica/vmartinez/proyecto_final/02_rcorrector/rmunfixable_/mnt/data/transcriptomica/vmartinez/proyecto_final/02_rcorrector.log'
+Filtering SRR30921774
+100000 reads processed
+200000 reads processed
+300000 reads processed
+400000 reads processed
+500000 reads processed
+600000 reads processed
+700000 reads processed
+800000 reads processed
+900000 reads processed
+1000000 reads processed
+1100000 reads processed
+1200000 reads processed
+1300000 reads processed
+1400000 reads processed
+1500000 reads processed
+1600000 reads processed
+1700000 reads processed
+1800000 reads processed
+1900000 reads processed
+2000000 reads processed
+2100000 reads processed
+2200000 reads processed
+2300000 reads processed
+2400000 reads processed
+2500000 reads processed
+2600000 reads processed
+2700000 reads processed
+2800000 reads processed
+2900000 reads processed
+3000000 reads processed
+3100000 reads processed
+3200000 reads processed
+3300000 reads processed
+3400000 reads processed
+3500000 reads processed
+3600000 reads processed
+3700000 reads processed
+3800000 reads processed
+3900000 reads processed
+4000000 reads processed
+4100000 reads processed
+4200000 reads processed
+4300000 reads processed
+4400000 reads processed
+4500000 reads processed
+4600000 reads processed
+4700000 reads processed
+4800000 reads processed
+4900000 reads processed
+5000000 reads processed
+5100000 reads processed
+5200000 reads processed
+5300000 reads processed
+5400000 reads processed
+5500000 reads processed
+5600000 reads processed
+5700000 reads processed
+5800000 reads processed
+5900000 reads processed
+6000000 reads processed
+6100000 reads processed
+6200000 reads processed
+6300000 reads processed
+6400000 reads processed
+6500000 reads processed
+6600000 reads processed
+6700000 reads processed
+6800000 reads processed
+6900000 reads processed
+7000000 reads processed
+7100000 reads processed
+7200000 reads processed
+7300000 reads processed
+7400000 reads processed
+7500000 reads processed
+7600000 reads processed
+7700000 reads processed
+7800000 reads processed
+7900000 reads processed
+8000000 reads processed
+8100000 reads processed
+8200000 reads processed
+8300000 reads processed
+8400000 reads processed
+8500000 reads processed
+8600000 reads processed
+8700000 reads processed
+8800000 reads processed
+8900000 reads processed
+9000000 reads processed
+9100000 reads processed
+9200000 reads processed
+9300000 reads processed
+9400000 reads processed
+9500000 reads processed
+9600000 reads processed
+9700000 reads processed
+9800000 reads processed
+9900000 reads processed
+10000000 reads processed
+10100000 reads processed
+10200000 reads processed
+10300000 reads processed
+10400000 reads processed
+10500000 reads processed
+10600000 reads processed
+10700000 reads processed
+10800000 reads processed
+10900000 reads processed
+11000000 reads processed
+11100000 reads processed
+11200000 reads processed
+11300000 reads processed
+11400000 reads processed
+11500000 reads processed
+11600000 reads processed
+11700000 reads processed
+11800000 reads processed
+11900000 reads processed
+12000000 reads processed
+12100000 reads processed
+12200000 reads processed
+12300000 reads processed
+12400000 reads processed
+12500000 reads processed
+12600000 reads processed
+12700000 reads processed
+12800000 reads processed
+12900000 reads processed
+13000000 reads processed
+13100000 reads processed
+13200000 reads processed
+13300000 reads processed
+13400000 reads processed
+13500000 reads processed
+13600000 reads processed
+13700000 reads processed
+13800000 reads processed
+13900000 reads processed
+14000000 reads processed
+14100000 reads processed
+14200000 reads processed
+14300000 reads processed
+14400000 reads processed
+14500000 reads processed
+14600000 reads processed
+14700000 reads processed
+14800000 reads processed
+14900000 reads processed
+15000000 reads processed
+15100000 reads processed
+15200000 reads processed
+15300000 reads processed
+15400000 reads processed
+15500000 reads processed
+15600000 reads processed
+15700000 reads processed
+15800000 reads processed
+15900000 reads processed
+16000000 reads processed
+16100000 reads processed
+16200000 reads processed
+16300000 reads processed
+16400000 reads processed
+16500000 reads processed
+16600000 reads processed
+16700000 reads processed
+16800000 reads processed
+16900000 reads processed
+17000000 reads processed
+17100000 reads processed
+17200000 reads processed
+17300000 reads processed
+17400000 reads processed
+17500000 reads processed
+17600000 reads processed
+17700000 reads processed
+17800000 reads processed
+17900000 reads processed
+18000000 reads processed
+18100000 reads processed
+18200000 reads processed
+18300000 reads processed
+18400000 reads processed
+18500000 reads processed
+18600000 reads processed
+18700000 reads processed
+18800000 reads processed
+18900000 reads processed
+19000000 reads processed
+19100000 reads processed
+19200000 reads processed
+19300000 reads processed
+19400000 reads processed
+19500000 reads processed
+19600000 reads processed
+19700000 reads processed
+19800000 reads processed
+19900000 reads processed
+20000000 reads processed
+20100000 reads processed
+20200000 reads processed
+20300000 reads processed
+20400000 reads processed
+20500000 reads processed
+20600000 reads processed
+20700000 reads processed
+20800000 reads processed
+20900000 reads processed
+21000000 reads processed
+21100000 reads processed
+21200000 reads processed
+21300000 reads processed
+21400000 reads processed
+21500000 reads processed
+21600000 reads processed
+21700000 reads processed
+21800000 reads processed
+21900000 reads processed
+22000000 reads processed
+22100000 reads processed
+22200000 reads processed
+22300000 reads processed
+22400000 reads processed
+22500000 reads processed
+22600000 reads processed
+22700000 reads processed
+22800000 reads processed
+22900000 reads processed
+23000000 reads processed
+23100000 reads processed
+23200000 reads processed
+23300000 reads processed
+23400000 reads processed
+23500000 reads processed
+23600000 reads processed
+23700000 reads processed
+23800000 reads processed
+23900000 reads processed
+24000000 reads processed
+24100000 reads processed
+24200000 reads processed
+24300000 reads processed
+24400000 reads processed
+24500000 reads processed
+24600000 reads processed
+24700000 reads processed
+24800000 reads processed
+24900000 reads processed
+25000000 reads processed
+25100000 reads processed
+25200000 reads processed
+25300000 reads processed
+25400000 reads processed
+25500000 reads processed
+25600000 reads processed
+25700000 reads processed
+25800000 reads processed
+25900000 reads processed
+26000000 reads processed
+26100000 reads processed
+26200000 reads processed
+26300000 reads processed
+26400000 reads processed
+26500000 reads processed
+26600000 reads processed
+26700000 reads processed
+26800000 reads processed
+26900000 reads processed
+27000000 reads processed
+27100000 reads processed
+27200000 reads processed
+27300000 reads processed
+27400000 reads processed
+27500000 reads processed
+27600000 reads processed
+27700000 reads processed
+27800000 reads processed
+27900000 reads processed
+28000000 reads processed
+28100000 reads processed
+28200000 reads processed
+28300000 reads processed
+28400000 reads processed
+28500000 reads processed
+28600000 reads processed
+28700000 reads processed
+Traceback (most recent call last):
+  File "/mnt/data/transcriptomica/database/TranscriptomeAssemblyTools/FilterUncorrectabledPEfastq.py", line 107, in <module>
+    unfix_log = open(os.path.join(
+                ^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/mnt/data/transcriptomica/vmartinez/proyecto_final/02_rcorrector/rmunfixable_/mnt/data/transcriptomica/vmartinez/proyecto_final/02_rcorrector.log'
+===============================
+STEP 2 — TRIMMOMATIC
+===============================
+Running Trimmomatic for SRR30921769
+TrimmomaticPE: Started with arguments: -threads 16 /mnt/data/transcriptomica/vmartinez/proyecto_final/02_rcorrector/SRR30921769_1.cor.fq /mnt/data/transcriptomica/vmartinez/proyecto_final/02_rcorrector/SRR30921769_2.cor.fq /mnt/data/transcriptomica/vmartinez/proyecto_final/03_trimmomatic/SRR30921769_1.paired.fastq.gz /mnt/data/transcriptomica/vmartinez/proyecto_final/03_trimmomatic/SRR30921769_1.unpaired.fastq.gz /mnt/data/transcriptomica/vmartinez/proyecto_final/03_trimmomatic/SRR30921769_2.paired.fastq.gz /mnt/data/transcriptomica/vmartinez/proyecto_final/03_trimmomatic/SRR30921769_2.unpaired.fastq.gz ILLUMINACLIP:/mnt/data/transcriptomica/database/TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:25 MINLEN:50 HEADCROP:10
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGCTCATGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATATTATAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTGGTCAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'AATGATACGGCGACCACCGAGATCTACACGTTCAGAGTTCTACAGTCCGA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATATTCCGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCGCCTGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCTGATCGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTAGTTGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTACAAGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGCCTAAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCCGGTGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACATCACGATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACCGATGTATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACTTAGGCATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGCGGACGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTGACATGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGTCGTCGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACACTTGAATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACATGTCAGAATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGGACGGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACGATCAGATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACCCGTCCCGATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATACATCGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACGTCCGCACATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCACTGTGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACTGACCAATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACGTGAAACGATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACACAGTGATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACGCCAATATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGCCATGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACCAGATCATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATAGGAATGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCCACTCGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACTAGCTTATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACGGCTACATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACCTTGTAATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACAGTCAACAATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACAGTTCCGTATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTTTCACGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGGCCACGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTGCCGAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Medium Clipping Sequence: 'TGGAATTCTCGGGTGCCAAGG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTCAAGTGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGAATGAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATATCGTGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACATTCCTTTATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGCTACCGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCGATTAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACGTGGCCTTATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGATCTGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACGTTTCGGAATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCTCTACGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACCGTACGTAATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTTGACTGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACGAGTGGATATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACACTGATATATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCGTGATGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATAGCTAGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTGAGTGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTCGGGAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATATTGGCGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATAAGCTAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'AATGATACGGCGACCACCGAGATCTACACTCTTTCCCTACACGACGCTCTTCCGATCT'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCGAAACGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATAAAATGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATATCAGTGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTGTTGGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCTTCGAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGCTGTAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTCTGAGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCTTTTGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCGTACGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGGAACTGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGTAGCCGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGTATAGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Medium Clipping Sequence: 'GCCTTGGCACCCGAGAATTCCA'
+ILLUMINACLIP: Using 0 prefix pairs, 76 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Read Pairs: 22289300 Both Surviving: 21097589 (94.65%) Forward Only Surviving: 612089 (2.75%) Reverse Only Surviving: 355187 (1.59%) Dropped: 224435 (1.01%)
+TrimmomaticPE: Completed successfully
+Running Trimmomatic for SRR30921770
+TrimmomaticPE: Started with arguments: -threads 16 /mnt/data/transcriptomica/vmartinez/proyecto_final/02_rcorrector/SRR30921770_1.cor.fq /mnt/data/transcriptomica/vmartinez/proyecto_final/02_rcorrector/SRR30921770_2.cor.fq /mnt/data/transcriptomica/vmartinez/proyecto_final/03_trimmomatic/SRR30921770_1.paired.fastq.gz /mnt/data/transcriptomica/vmartinez/proyecto_final/03_trimmomatic/SRR30921770_1.unpaired.fastq.gz /mnt/data/transcriptomica/vmartinez/proyecto_final/03_trimmomatic/SRR30921770_2.paired.fastq.gz /mnt/data/transcriptomica/vmartinez/proyecto_final/03_trimmomatic/SRR30921770_2.unpaired.fastq.gz ILLUMINACLIP:/mnt/data/transcriptomica/database/TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:25 MINLEN:50 HEADCROP:10
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGCTCATGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATATTATAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTGGTCAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'AATGATACGGCGACCACCGAGATCTACACGTTCAGAGTTCTACAGTCCGA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATATTCCGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCGCCTGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCTGATCGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTAGTTGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTACAAGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGCCTAAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCCGGTGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACATCACGATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACCGATGTATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACTTAGGCATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGCGGACGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTGACATGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGTCGTCGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACACTTGAATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACATGTCAGAATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGGACGGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACGATCAGATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACCCGTCCCGATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATACATCGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACGTCCGCACATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCACTGTGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACTGACCAATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACGTGAAACGATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACACAGTGATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACGCCAATATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGCCATGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACCAGATCATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATAGGAATGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCCACTCGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACTAGCTTATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACGGCTACATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACCTTGTAATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACAGTCAACAATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACAGTTCCGTATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTTTCACGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGGCCACGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTGCCGAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Medium Clipping Sequence: 'TGGAATTCTCGGGTGCCAAGG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTCAAGTGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGAATGAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATATCGTGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACATTCCTTTATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGCTACCGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCGATTAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACGTGGCCTTATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGATCTGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACGTTTCGGAATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCTCTACGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACCGTACGTAATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTTGACTGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACGAGTGGATATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACACTGATATATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCGTGATGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATAGCTAGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTGAGTGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTCGGGAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATATTGGCGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATAAGCTAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'AATGATACGGCGACCACCGAGATCTACACTCTTTCCCTACACGACGCTCTTCCGATCT'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCGAAACGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATAAAATGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATATCAGTGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTGTTGGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCTTCGAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGCTGTAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTCTGAGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCTTTTGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCGTACGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGGAACTGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGTAGCCGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGTATAGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Medium Clipping Sequence: 'GCCTTGGCACCCGAGAATTCCA'
+ILLUMINACLIP: Using 0 prefix pairs, 76 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Read Pairs: 20577164 Both Surviving: 19381830 (94.19%) Forward Only Surviving: 653322 (3.17%) Reverse Only Surviving: 314861 (1.53%) Dropped: 227151 (1.10%)
+TrimmomaticPE: Completed successfully
+Running Trimmomatic for SRR30921771
+TrimmomaticPE: Started with arguments: -threads 16 /mnt/data/transcriptomica/vmartinez/proyecto_final/02_rcorrector/SRR30921771_1.cor.fq /mnt/data/transcriptomica/vmartinez/proyecto_final/02_rcorrector/SRR30921771_2.cor.fq /mnt/data/transcriptomica/vmartinez/proyecto_final/03_trimmomatic/SRR30921771_1.paired.fastq.gz /mnt/data/transcriptomica/vmartinez/proyecto_final/03_trimmomatic/SRR30921771_1.unpaired.fastq.gz /mnt/data/transcriptomica/vmartinez/proyecto_final/03_trimmomatic/SRR30921771_2.paired.fastq.gz /mnt/data/transcriptomica/vmartinez/proyecto_final/03_trimmomatic/SRR30921771_2.unpaired.fastq.gz ILLUMINACLIP:/mnt/data/transcriptomica/database/TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:25 MINLEN:50 HEADCROP:10
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGCTCATGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATATTATAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTGGTCAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'AATGATACGGCGACCACCGAGATCTACACGTTCAGAGTTCTACAGTCCGA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATATTCCGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCGCCTGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCTGATCGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTAGTTGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTACAAGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGCCTAAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCCGGTGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACATCACGATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACCGATGTATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACTTAGGCATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGCGGACGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTGACATGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGTCGTCGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACACTTGAATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACATGTCAGAATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGGACGGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACGATCAGATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACCCGTCCCGATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATACATCGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACGTCCGCACATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCACTGTGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACTGACCAATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACGTGAAACGATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACACAGTGATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACGCCAATATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGCCATGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACCAGATCATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATAGGAATGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCCACTCGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACTAGCTTATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACGGCTACATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACCTTGTAATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACAGTCAACAATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACAGTTCCGTATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTTTCACGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGGCCACGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTGCCGAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Medium Clipping Sequence: 'TGGAATTCTCGGGTGCCAAGG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTCAAGTGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGAATGAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATATCGTGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACATTCCTTTATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGCTACCGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCGATTAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACGTGGCCTTATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGATCTGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACGTTTCGGAATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCTCTACGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACCGTACGTAATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTTGACTGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACGAGTGGATATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACACTGATATATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCGTGATGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATAGCTAGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTGAGTGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTCGGGAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATATTGGCGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATAAGCTAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'AATGATACGGCGACCACCGAGATCTACACTCTTTCCCTACACGACGCTCTTCCGATCT'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCGAAACGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATAAAATGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATATCAGTGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTGTTGGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCTTCGAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGCTGTAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTCTGAGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCTTTTGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCGTACGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGGAACTGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGTAGCCGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGTATAGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Medium Clipping Sequence: 'GCCTTGGCACCCGAGAATTCCA'
+ILLUMINACLIP: Using 0 prefix pairs, 76 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Read Pairs: 20897862 Both Surviving: 19754181 (94.53%) Forward Only Surviving: 635335 (3.04%) Reverse Only Surviving: 294786 (1.41%) Dropped: 213560 (1.02%)
+TrimmomaticPE: Completed successfully
+Running Trimmomatic for SRR30921772
+TrimmomaticPE: Started with arguments: -threads 16 /mnt/data/transcriptomica/vmartinez/proyecto_final/02_rcorrector/SRR30921772_1.cor.fq /mnt/data/transcriptomica/vmartinez/proyecto_final/02_rcorrector/SRR30921772_2.cor.fq /mnt/data/transcriptomica/vmartinez/proyecto_final/03_trimmomatic/SRR30921772_1.paired.fastq.gz /mnt/data/transcriptomica/vmartinez/proyecto_final/03_trimmomatic/SRR30921772_1.unpaired.fastq.gz /mnt/data/transcriptomica/vmartinez/proyecto_final/03_trimmomatic/SRR30921772_2.paired.fastq.gz /mnt/data/transcriptomica/vmartinez/proyecto_final/03_trimmomatic/SRR30921772_2.unpaired.fastq.gz ILLUMINACLIP:/mnt/data/transcriptomica/database/TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:25 MINLEN:50 HEADCROP:10
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGCTCATGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATATTATAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTGGTCAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'AATGATACGGCGACCACCGAGATCTACACGTTCAGAGTTCTACAGTCCGA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATATTCCGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCGCCTGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCTGATCGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTAGTTGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTACAAGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGCCTAAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCCGGTGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACATCACGATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACCGATGTATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACTTAGGCATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGCGGACGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTGACATGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGTCGTCGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACACTTGAATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACATGTCAGAATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGGACGGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACGATCAGATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACCCGTCCCGATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATACATCGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACGTCCGCACATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCACTGTGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACTGACCAATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACGTGAAACGATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACACAGTGATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACGCCAATATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGCCATGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACCAGATCATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATAGGAATGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCCACTCGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACTAGCTTATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACGGCTACATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACCTTGTAATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACAGTCAACAATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACAGTTCCGTATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTTTCACGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGGCCACGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTGCCGAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Medium Clipping Sequence: 'TGGAATTCTCGGGTGCCAAGG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTCAAGTGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGAATGAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATATCGTGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACATTCCTTTATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGCTACCGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCGATTAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACGTGGCCTTATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGATCTGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACGTTTCGGAATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCTCTACGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACCGTACGTAATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTTGACTGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACGAGTGGATATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACACTGATATATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCGTGATGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATAGCTAGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTGAGTGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTCGGGAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATATTGGCGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATAAGCTAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'AATGATACGGCGACCACCGAGATCTACACTCTTTCCCTACACGACGCTCTTCCGATCT'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCGAAACGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATAAAATGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATATCAGTGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTGTTGGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCTTCGAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGCTGTAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTCTGAGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCTTTTGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCGTACGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGGAACTGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGTAGCCGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGTATAGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Medium Clipping Sequence: 'GCCTTGGCACCCGAGAATTCCA'
+ILLUMINACLIP: Using 0 prefix pairs, 76 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Read Pairs: 31817214 Both Surviving: 26665996 (83.81%) Forward Only Surviving: 3062769 (9.63%) Reverse Only Surviving: 888796 (2.79%) Dropped: 1199653 (3.77%)
+TrimmomaticPE: Completed successfully
+Running Trimmomatic for SRR30921773
+TrimmomaticPE: Started with arguments: -threads 16 /mnt/data/transcriptomica/vmartinez/proyecto_final/02_rcorrector/SRR30921773_1.cor.fq /mnt/data/transcriptomica/vmartinez/proyecto_final/02_rcorrector/SRR30921773_2.cor.fq /mnt/data/transcriptomica/vmartinez/proyecto_final/03_trimmomatic/SRR30921773_1.paired.fastq.gz /mnt/data/transcriptomica/vmartinez/proyecto_final/03_trimmomatic/SRR30921773_1.unpaired.fastq.gz /mnt/data/transcriptomica/vmartinez/proyecto_final/03_trimmomatic/SRR30921773_2.paired.fastq.gz /mnt/data/transcriptomica/vmartinez/proyecto_final/03_trimmomatic/SRR30921773_2.unpaired.fastq.gz ILLUMINACLIP:/mnt/data/transcriptomica/database/TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:25 MINLEN:50 HEADCROP:10
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGCTCATGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATATTATAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTGGTCAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'AATGATACGGCGACCACCGAGATCTACACGTTCAGAGTTCTACAGTCCGA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATATTCCGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCGCCTGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCTGATCGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTAGTTGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTACAAGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGCCTAAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCCGGTGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACATCACGATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACCGATGTATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACTTAGGCATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGCGGACGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTGACATGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGTCGTCGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACACTTGAATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACATGTCAGAATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGGACGGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACGATCAGATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACCCGTCCCGATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATACATCGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACGTCCGCACATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCACTGTGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACTGACCAATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACGTGAAACGATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACACAGTGATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACGCCAATATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGCCATGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACCAGATCATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATAGGAATGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCCACTCGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACTAGCTTATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACGGCTACATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACCTTGTAATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACAGTCAACAATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACAGTTCCGTATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTTTCACGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGGCCACGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTGCCGAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Medium Clipping Sequence: 'TGGAATTCTCGGGTGCCAAGG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTCAAGTGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGAATGAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATATCGTGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACATTCCTTTATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGCTACCGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCGATTAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACGTGGCCTTATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGATCTGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACGTTTCGGAATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCTCTACGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACCGTACGTAATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTTGACTGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACGAGTGGATATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACACTGATATATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCGTGATGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATAGCTAGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTGAGTGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTCGGGAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATATTGGCGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATAAGCTAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'AATGATACGGCGACCACCGAGATCTACACTCTTTCCCTACACGACGCTCTTCCGATCT'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCGAAACGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATAAAATGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATATCAGTGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTGTTGGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCTTCGAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGCTGTAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTCTGAGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCTTTTGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCGTACGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGGAACTGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGTAGCCGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGTATAGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Medium Clipping Sequence: 'GCCTTGGCACCCGAGAATTCCA'
+ILLUMINACLIP: Using 0 prefix pairs, 76 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Read Pairs: 22569521 Both Surviving: 18865550 (83.59%) Forward Only Surviving: 2200520 (9.75%) Reverse Only Surviving: 653062 (2.89%) Dropped: 850389 (3.77%)
+TrimmomaticPE: Completed successfully
+Running Trimmomatic for SRR30921774
+TrimmomaticPE: Started with arguments: -threads 16 /mnt/data/transcriptomica/vmartinez/proyecto_final/02_rcorrector/SRR30921774_1.cor.fq /mnt/data/transcriptomica/vmartinez/proyecto_final/02_rcorrector/SRR30921774_2.cor.fq /mnt/data/transcriptomica/vmartinez/proyecto_final/03_trimmomatic/SRR30921774_1.paired.fastq.gz /mnt/data/transcriptomica/vmartinez/proyecto_final/03_trimmomatic/SRR30921774_1.unpaired.fastq.gz /mnt/data/transcriptomica/vmartinez/proyecto_final/03_trimmomatic/SRR30921774_2.paired.fastq.gz /mnt/data/transcriptomica/vmartinez/proyecto_final/03_trimmomatic/SRR30921774_2.unpaired.fastq.gz ILLUMINACLIP:/mnt/data/transcriptomica/database/TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:25 MINLEN:50 HEADCROP:10
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGCTCATGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATATTATAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTGGTCAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'AATGATACGGCGACCACCGAGATCTACACGTTCAGAGTTCTACAGTCCGA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATATTCCGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCGCCTGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCTGATCGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTAGTTGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTACAAGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGCCTAAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCCGGTGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACATCACGATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACCGATGTATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACTTAGGCATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGCGGACGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTGACATGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGTCGTCGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACACTTGAATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACATGTCAGAATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGGACGGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACGATCAGATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACCCGTCCCGATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATACATCGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACGTCCGCACATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCACTGTGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACTGACCAATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACGTGAAACGATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACACAGTGATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACGCCAATATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGCCATGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACCAGATCATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATAGGAATGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCCACTCGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACTAGCTTATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACGGCTACATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACCTTGTAATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACAGTCAACAATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACAGTTCCGTATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTTTCACGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGGCCACGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTGCCGAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Medium Clipping Sequence: 'TGGAATTCTCGGGTGCCAAGG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTCAAGTGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGAATGAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATATCGTGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACATTCCTTTATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGCTACCGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCGATTAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACGTGGCCTTATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGATCTGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACGTTTCGGAATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCTCTACGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACCGTACGTAATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTTGACTGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACGAGTGGATATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'GATCGGAAGAGCACACGTCTGAACTCCAGTCACACTGATATATCTCGTATGCCGTCTTCTGCTTG'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCGTGATGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATAGCTAGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTGAGTGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTCGGGAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATATTGGCGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATAAGCTAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'AATGATACGGCGACCACCGAGATCTACACTCTTTCCCTACACGACGCTCTTCCGATCT'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCGAAACGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATAAAATGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATATCAGTGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTGTTGGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCTTCGAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGCTGTAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATTCTGAGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCTTTTGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATCGTACGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGGAACTGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGTAGCCGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Long Clipping Sequence: 'CAAGCAGAAGACGGCATACGAGATGTATAGGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA'
+Using Medium Clipping Sequence: 'GCCTTGGCACCCGAGAATTCCA'
+ILLUMINACLIP: Using 0 prefix pairs, 76 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Read Pairs: 28753048 Both Surviving: 24606111 (85.58%) Forward Only Surviving: 2131638 (7.41%) Reverse Only Surviving: 979364 (3.41%) Dropped: 1035935 (3.60%)
+TrimmomaticPE: Completed successfully
+===============================
+STEP 3 — FASTQC TRIMMED
+===============================
+Running FastQC trimmed for SRR30921769
+Started analysis of SRR30921769_1.paired.fastq.gz
+Started analysis of SRR30921769_2.paired.fastq.gz
+Approx 5% complete for SRR30921769_1.paired.fastq.gz
+Approx 5% complete for SRR30921769_2.paired.fastq.gz
+Approx 10% complete for SRR30921769_1.paired.fastq.gz
+Approx 10% complete for SRR30921769_2.paired.fastq.gz
+Approx 15% complete for SRR30921769_1.paired.fastq.gz
+Approx 15% complete for SRR30921769_2.paired.fastq.gz
+Approx 20% complete for SRR30921769_1.paired.fastq.gz
+Approx 20% complete for SRR30921769_2.paired.fastq.gz
+Approx 25% complete for SRR30921769_1.paired.fastq.gz
+Approx 25% complete for SRR30921769_2.paired.fastq.gz
+Approx 30% complete for SRR30921769_1.paired.fastq.gz
+Approx 30% complete for SRR30921769_2.paired.fastq.gz
+Approx 35% complete for SRR30921769_1.paired.fastq.gz
+Approx 35% complete for SRR30921769_2.paired.fastq.gz
+Approx 40% complete for SRR30921769_1.paired.fastq.gz
+Approx 40% complete for SRR30921769_2.paired.fastq.gz
+Approx 45% complete for SRR30921769_1.paired.fastq.gz
+Approx 45% complete for SRR30921769_2.paired.fastq.gz
+Approx 50% complete for SRR30921769_1.paired.fastq.gz
+Approx 50% complete for SRR30921769_2.paired.fastq.gz
+Approx 55% complete for SRR30921769_1.paired.fastq.gz
+Approx 55% complete for SRR30921769_2.paired.fastq.gz
+Approx 60% complete for SRR30921769_1.paired.fastq.gz
+Approx 60% complete for SRR30921769_2.paired.fastq.gz
+Approx 65% complete for SRR30921769_1.paired.fastq.gz
+Too many tiles (>500) so giving up trying to do per-tile qualities since we're probably parsing the file wrongly
+Approx 65% complete for SRR30921769_2.paired.fastq.gz
+Too many tiles (>500) so giving up trying to do per-tile qualities since we're probably parsing the file wrongly
+Approx 70% complete for SRR30921769_1.paired.fastq.gz
+Approx 70% complete for SRR30921769_2.paired.fastq.gz
+Approx 75% complete for SRR30921769_1.paired.fastq.gz
+Approx 75% complete for SRR30921769_2.paired.fastq.gz
+Approx 80% complete for SRR30921769_1.paired.fastq.gz
+Approx 80% complete for SRR30921769_2.paired.fastq.gz
+Approx 85% complete for SRR30921769_1.paired.fastq.gz
+Approx 85% complete for SRR30921769_2.paired.fastq.gz
+Approx 90% complete for SRR30921769_1.paired.fastq.gz
+Approx 90% complete for SRR30921769_2.paired.fastq.gz
+Approx 95% complete for SRR30921769_1.paired.fastq.gz
+Approx 95% complete for SRR30921769_2.paired.fastq.gz
+Analysis complete for SRR30921769_1.paired.fastq.gz
+Analysis complete for SRR30921769_2.paired.fastq.gz
+Running FastQC trimmed for SRR30921770
+Started analysis of SRR30921770_1.paired.fastq.gz
+Started analysis of SRR30921770_2.paired.fastq.gz
+Approx 5% complete for SRR30921770_1.paired.fastq.gz
+Approx 5% complete for SRR30921770_2.paired.fastq.gz
+Approx 10% complete for SRR30921770_1.paired.fastq.gz
+Approx 10% complete for SRR30921770_2.paired.fastq.gz
+Approx 15% complete for SRR30921770_1.paired.fastq.gz
+Approx 15% complete for SRR30921770_2.paired.fastq.gz
+Approx 20% complete for SRR30921770_1.paired.fastq.gz
+Approx 20% complete for SRR30921770_2.paired.fastq.gz
+Approx 25% complete for SRR30921770_1.paired.fastq.gz
+Approx 25% complete for SRR30921770_2.paired.fastq.gz
+Approx 30% complete for SRR30921770_1.paired.fastq.gz
+Approx 30% complete for SRR30921770_2.paired.fastq.gz
+Approx 35% complete for SRR30921770_1.paired.fastq.gz
+Approx 35% complete for SRR30921770_2.paired.fastq.gz
+Approx 40% complete for SRR30921770_1.paired.fastq.gz
+Approx 40% complete for SRR30921770_2.paired.fastq.gz
+Approx 45% complete for SRR30921770_1.paired.fastq.gz
+Approx 45% complete for SRR30921770_2.paired.fastq.gz
+Approx 50% complete for SRR30921770_1.paired.fastq.gz
+Approx 50% complete for SRR30921770_2.paired.fastq.gz
+Approx 55% complete for SRR30921770_1.paired.fastq.gz
+Approx 55% complete for SRR30921770_2.paired.fastq.gz
+Approx 60% complete for SRR30921770_1.paired.fastq.gz
+Too many tiles (>500) so giving up trying to do per-tile qualities since we're probably parsing the file wrongly
+Approx 65% complete for SRR30921770_1.paired.fastq.gz
+Approx 60% complete for SRR30921770_2.paired.fastq.gz
+Too many tiles (>500) so giving up trying to do per-tile qualities since we're probably parsing the file wrongly
+Approx 70% complete for SRR30921770_1.paired.fastq.gz
+Approx 65% complete for SRR30921770_2.paired.fastq.gz
+Approx 75% complete for SRR30921770_1.paired.fastq.gz
+Approx 70% complete for SRR30921770_2.paired.fastq.gz
+Approx 80% complete for SRR30921770_1.paired.fastq.gz
+Approx 75% complete for SRR30921770_2.paired.fastq.gz
+Approx 85% complete for SRR30921770_1.paired.fastq.gz
+Approx 80% complete for SRR30921770_2.paired.fastq.gz
+Approx 90% complete for SRR30921770_1.paired.fastq.gz
+Approx 85% complete for SRR30921770_2.paired.fastq.gz
+Approx 95% complete for SRR30921770_1.paired.fastq.gz
+Approx 90% complete for SRR30921770_2.paired.fastq.gz
+Analysis complete for SRR30921770_1.paired.fastq.gz
+Approx 95% complete for SRR30921770_2.paired.fastq.gz
+Analysis complete for SRR30921770_2.paired.fastq.gz
+Running FastQC trimmed for SRR30921771
+Started analysis of SRR30921771_1.paired.fastq.gz
+Started analysis of SRR30921771_2.paired.fastq.gz
+Approx 5% complete for SRR30921771_1.paired.fastq.gz
+Approx 5% complete for SRR30921771_2.paired.fastq.gz
+Approx 10% complete for SRR30921771_1.paired.fastq.gz
+Approx 10% complete for SRR30921771_2.paired.fastq.gz
+Approx 15% complete for SRR30921771_1.paired.fastq.gz
+Approx 15% complete for SRR30921771_2.paired.fastq.gz
+Approx 20% complete for SRR30921771_1.paired.fastq.gz
+Approx 20% complete for SRR30921771_2.paired.fastq.gz
+Approx 25% complete for SRR30921771_1.paired.fastq.gz
+Approx 25% complete for SRR30921771_2.paired.fastq.gz
+Approx 30% complete for SRR30921771_1.paired.fastq.gz
+Approx 30% complete for SRR30921771_2.paired.fastq.gz
+Approx 35% complete for SRR30921771_1.paired.fastq.gz
+Approx 35% complete for SRR30921771_2.paired.fastq.gz
+Approx 40% complete for SRR30921771_1.paired.fastq.gz
+Approx 40% complete for SRR30921771_2.paired.fastq.gz
+Approx 45% complete for SRR30921771_1.paired.fastq.gz
+Approx 45% complete for SRR30921771_2.paired.fastq.gz
+Approx 50% complete for SRR30921771_1.paired.fastq.gz
+Approx 50% complete for SRR30921771_2.paired.fastq.gz
+Approx 55% complete for SRR30921771_1.paired.fastq.gz
+Approx 55% complete for SRR30921771_2.paired.fastq.gz
+Approx 60% complete for SRR30921771_1.paired.fastq.gz
+Approx 60% complete for SRR30921771_2.paired.fastq.gz
+Approx 65% complete for SRR30921771_1.paired.fastq.gz
+Approx 65% complete for SRR30921771_2.paired.fastq.gz
+Too many tiles (>500) so giving up trying to do per-tile qualities since we're probably parsing the file wrongly
+Too many tiles (>500) so giving up trying to do per-tile qualities since we're probably parsing the file wrongly
+Approx 70% complete for SRR30921771_1.paired.fastq.gz
+Approx 70% complete for SRR30921771_2.paired.fastq.gz
+Approx 75% complete for SRR30921771_1.paired.fastq.gz
+Approx 75% complete for SRR30921771_2.paired.fastq.gz
+Approx 80% complete for SRR30921771_1.paired.fastq.gz
+Approx 80% complete for SRR30921771_2.paired.fastq.gz
+Approx 85% complete for SRR30921771_1.paired.fastq.gz
+Approx 85% complete for SRR30921771_2.paired.fastq.gz
+Approx 90% complete for SRR30921771_1.paired.fastq.gz
+Approx 90% complete for SRR30921771_2.paired.fastq.gz
+Approx 95% complete for SRR30921771_1.paired.fastq.gz
+Approx 95% complete for SRR30921771_2.paired.fastq.gz
+Analysis complete for SRR30921771_1.paired.fastq.gz
+Analysis complete for SRR30921771_2.paired.fastq.gz
+Running FastQC trimmed for SRR30921772
+Started analysis of SRR30921772_1.paired.fastq.gz
+Started analysis of SRR30921772_2.paired.fastq.gz
+Approx 5% complete for SRR30921772_1.paired.fastq.gz
+Approx 5% complete for SRR30921772_2.paired.fastq.gz
+Approx 10% complete for SRR30921772_2.paired.fastq.gz
+Approx 10% complete for SRR30921772_1.paired.fastq.gz
+Approx 15% complete for SRR30921772_2.paired.fastq.gz
+Approx 15% complete for SRR30921772_1.paired.fastq.gz
+Approx 20% complete for SRR30921772_2.paired.fastq.gz
+Approx 20% complete for SRR30921772_1.paired.fastq.gz
+Approx 25% complete for SRR30921772_2.paired.fastq.gz
+Approx 25% complete for SRR30921772_1.paired.fastq.gz
+Approx 30% complete for SRR30921772_2.paired.fastq.gz
+Approx 30% complete for SRR30921772_1.paired.fastq.gz
+Approx 35% complete for SRR30921772_2.paired.fastq.gz
+Approx 35% complete for SRR30921772_1.paired.fastq.gz
+Approx 40% complete for SRR30921772_2.paired.fastq.gz
+Approx 40% complete for SRR30921772_1.paired.fastq.gz
+Approx 45% complete for SRR30921772_2.paired.fastq.gz
+Approx 45% complete for SRR30921772_1.paired.fastq.gz
+Approx 50% complete for SRR30921772_2.paired.fastq.gz
+Approx 50% complete for SRR30921772_1.paired.fastq.gz
+Too many tiles (>500) so giving up trying to do per-tile qualities since we're probably parsing the file wrongly
+Too many tiles (>500) so giving up trying to do per-tile qualities since we're probably parsing the file wrongly
+Approx 55% complete for SRR30921772_2.paired.fastq.gz
+Approx 55% complete for SRR30921772_1.paired.fastq.gz
+Approx 60% complete for SRR30921772_2.paired.fastq.gz
+Approx 60% complete for SRR30921772_1.paired.fastq.gz
+Approx 65% complete for SRR30921772_2.paired.fastq.gz
+Approx 65% complete for SRR30921772_1.paired.fastq.gz
+Approx 70% complete for SRR30921772_2.paired.fastq.gz
+Approx 70% complete for SRR30921772_1.paired.fastq.gz
+Approx 75% complete for SRR30921772_2.paired.fastq.gz
+Approx 75% complete for SRR30921772_1.paired.fastq.gz
+Approx 80% complete for SRR30921772_2.paired.fastq.gz
+Approx 80% complete for SRR30921772_1.paired.fastq.gz
+Approx 85% complete for SRR30921772_2.paired.fastq.gz
+Approx 85% complete for SRR30921772_1.paired.fastq.gz
+Approx 90% complete for SRR30921772_2.paired.fastq.gz
+Approx 90% complete for SRR30921772_1.paired.fastq.gz
+Approx 95% complete for SRR30921772_2.paired.fastq.gz
+Approx 95% complete for SRR30921772_1.paired.fastq.gz
+Analysis complete for SRR30921772_2.paired.fastq.gz
+Analysis complete for SRR30921772_1.paired.fastq.gz
+Running FastQC trimmed for SRR30921773
+Started analysis of SRR30921773_1.paired.fastq.gz
+Started analysis of SRR30921773_2.paired.fastq.gz
+Approx 5% complete for SRR30921773_1.paired.fastq.gz
+Approx 5% complete for SRR30921773_2.paired.fastq.gz
+Approx 10% complete for SRR30921773_2.paired.fastq.gz
+Approx 10% complete for SRR30921773_1.paired.fastq.gz
+Approx 15% complete for SRR30921773_2.paired.fastq.gz
+Approx 15% complete for SRR30921773_1.paired.fastq.gz
+Approx 20% complete for SRR30921773_2.paired.fastq.gz
+Approx 20% complete for SRR30921773_1.paired.fastq.gz
+Approx 25% complete for SRR30921773_2.paired.fastq.gz
+Approx 25% complete for SRR30921773_1.paired.fastq.gz
+Approx 30% complete for SRR30921773_2.paired.fastq.gz
+Approx 30% complete for SRR30921773_1.paired.fastq.gz
+Approx 35% complete for SRR30921773_2.paired.fastq.gz
+Approx 35% complete for SRR30921773_1.paired.fastq.gz
+Approx 40% complete for SRR30921773_2.paired.fastq.gz
+Approx 40% complete for SRR30921773_1.paired.fastq.gz
+Approx 45% complete for SRR30921773_2.paired.fastq.gz
+Approx 45% complete for SRR30921773_1.paired.fastq.gz
+Approx 50% complete for SRR30921773_2.paired.fastq.gz
+Approx 50% complete for SRR30921773_1.paired.fastq.gz
+Too many tiles (>500) so giving up trying to do per-tile qualities since we're probably parsing the file wrongly
+Approx 55% complete for SRR30921773_2.paired.fastq.gz
+Too many tiles (>500) so giving up trying to do per-tile qualities since we're probably parsing the file wrongly
+Approx 55% complete for SRR30921773_1.paired.fastq.gz
+Approx 60% complete for SRR30921773_2.paired.fastq.gz
+Approx 60% complete for SRR30921773_1.paired.fastq.gz
+Approx 65% complete for SRR30921773_2.paired.fastq.gz
+Approx 65% complete for SRR30921773_1.paired.fastq.gz
+Approx 70% complete for SRR30921773_2.paired.fastq.gz
+Approx 70% complete for SRR30921773_1.paired.fastq.gz
+Approx 75% complete for SRR30921773_2.paired.fastq.gz
+Approx 75% complete for SRR30921773_1.paired.fastq.gz
+Approx 80% complete for SRR30921773_2.paired.fastq.gz
+Approx 80% complete for SRR30921773_1.paired.fastq.gz
+Approx 85% complete for SRR30921773_2.paired.fastq.gz
+Approx 85% complete for SRR30921773_1.paired.fastq.gz
+Approx 90% complete for SRR30921773_2.paired.fastq.gz
+Approx 90% complete for SRR30921773_1.paired.fastq.gz
+Approx 95% complete for SRR30921773_2.paired.fastq.gz
+Approx 95% complete for SRR30921773_1.paired.fastq.gz
+Analysis complete for SRR30921773_2.paired.fastq.gz
+Analysis complete for SRR30921773_1.paired.fastq.gz
+Running FastQC trimmed for SRR30921774
+Started analysis of SRR30921774_1.paired.fastq.gz
+Started analysis of SRR30921774_2.paired.fastq.gz
+Approx 5% complete for SRR30921774_1.paired.fastq.gz
+Approx 5% complete for SRR30921774_2.paired.fastq.gz
+Approx 10% complete for SRR30921774_2.paired.fastq.gz
+Approx 10% complete for SRR30921774_1.paired.fastq.gz
+Approx 15% complete for SRR30921774_2.paired.fastq.gz
+Approx 15% complete for SRR30921774_1.paired.fastq.gz
+Approx 20% complete for SRR30921774_2.paired.fastq.gz
+Approx 20% complete for SRR30921774_1.paired.fastq.gz
+Approx 25% complete for SRR30921774_2.paired.fastq.gz
+Approx 25% complete for SRR30921774_1.paired.fastq.gz
+Approx 30% complete for SRR30921774_2.paired.fastq.gz
+Approx 30% complete for SRR30921774_1.paired.fastq.gz
+Approx 35% complete for SRR30921774_2.paired.fastq.gz
+Approx 35% complete for SRR30921774_1.paired.fastq.gz
+Approx 40% complete for SRR30921774_2.paired.fastq.gz
+Approx 40% complete for SRR30921774_1.paired.fastq.gz
+Approx 45% complete for SRR30921774_2.paired.fastq.gz
+Approx 45% complete for SRR30921774_1.paired.fastq.gz
+Approx 50% complete for SRR30921774_2.paired.fastq.gz
+Approx 50% complete for SRR30921774_1.paired.fastq.gz
+Too many tiles (>500) so giving up trying to do per-tile qualities since we're probably parsing the file wrongly
+Too many tiles (>500) so giving up trying to do per-tile qualities since we're probably parsing the file wrongly
+Approx 55% complete for SRR30921774_2.paired.fastq.gz
+Approx 55% complete for SRR30921774_1.paired.fastq.gz
+Approx 60% complete for SRR30921774_2.paired.fastq.gz
+Approx 60% complete for SRR30921774_1.paired.fastq.gz
+Approx 65% complete for SRR30921774_2.paired.fastq.gz
+Approx 65% complete for SRR30921774_1.paired.fastq.gz
+Approx 70% complete for SRR30921774_2.paired.fastq.gz
+Approx 70% complete for SRR30921774_1.paired.fastq.gz
+Approx 75% complete for SRR30921774_2.paired.fastq.gz
+Approx 75% complete for SRR30921774_1.paired.fastq.gz
+Approx 80% complete for SRR30921774_2.paired.fastq.gz
+Approx 80% complete for SRR30921774_1.paired.fastq.gz
+Approx 85% complete for SRR30921774_2.paired.fastq.gz
+Approx 85% complete for SRR30921774_1.paired.fastq.gz
+Approx 90% complete for SRR30921774_2.paired.fastq.gz
+Approx 90% complete for SRR30921774_1.paired.fastq.gz
+Approx 95% complete for SRR30921774_1.paired.fastq.gz
+Approx 95% complete for SRR30921774_2.paired.fastq.gz
+Analysis complete for SRR30921774_1.paired.fastq.gz
+Analysis complete for SRR30921774_2.paired.fastq.gz
