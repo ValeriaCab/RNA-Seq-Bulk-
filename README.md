@@ -59,6 +59,9 @@ El procesamiento y análisis de los datos de RNA-seq se llevó a cabo mediante e
 
 **Script:** [Paso 1](scripts/01_download_sra.slurm)
 
+**Log:** [Paso 1](logs/Download_data.zip)
+
+
 **Herramienta:** WGET
 
 **Descripción:** Usando *WGET* se descargaron dos archivos FASTQ comprimidos (.gz) por cada muestra (TOTAL = 6 muestras), estos archivos contienen las lecturas *paired-end unstranded* obtenidas por secuenciación mediante la plataforma Illumina HiSeq 4000, con  una profundidad de secuenciación aproximada de entre 20 y 30 millones de lecturas por muestra.
